@@ -1,0 +1,57 @@
+P6, P7, P8, A1, A2, A3
+
+P 6 
+1. 구글링 
+
+P 7 
+1. String -> Date 형으로 변환 
+2. Date 함수 사용 -> duration 
+
+P 8
+1. String -> Date 형으로 변환 
+2. Date 함수 사용 -> add date 
+
+P 14 
+1. an 이 와야 하는 경우의 수를 배열로 선언 : ["a", "e", "i", "o", "u"]; 
+2-1. String.substring(" "); // ["This", "is", "a", "apple"]; 
+2-2. String.contains( " a " / " an " );  
+
+
+P 15 
+1. 사칙연산 : * , / , + , - 
+2. contains() -> 입력된 문자열 중에 사칙연산 기호가 있는지 찾아 
+3. substiring() -> 입려된 문자열을 사칙연산 기호를 기준으로 앞 / 뒤로 잘라 
+
+String inputs = 5*7.5; 
+1) inputs.contains("*");
+1) inputs.contains("/");
+
+2) int index = inputs.findIndex("*"); // 1
+
+3) String cuttedInput1 = inputs.substring(0, index); // 5
+3) String cuttedInput2 = inputs.substring(index+1); // 7.5
+
+4) Integer.valueOf(cuttedInput1); //   String -> Integer 
+4) Double.valueOf(cuttedInput2); // String -> Double 
+...
+
+5) Double = Integer * Double 
+
+A1 (정현 생각)
+A2와 비슷하게 가는데 while(true)문 안에 평균값, 최대값, 최소값 구하는 조건or반복문을 각각 따로 만든다
+
+
+A 3
+1) String.trim(); // 모든 띄어쓰기를 없앰 
+2) 모든 String 을 대문자로 변환 또는 소문자로 변환 
+3) 모든 character 를 하나씩 배열의  원소로 만듦 // ["I", "G" , "O", "T", "O", "S", "C", "H", "O", "O", "L"]; 
+4) a) I -> 배열에 I 몇개 있는지 확인 
+        I 제거 
+    b) G -> 배열에 G 가 몇개 있는지 확인 
+       G 제거 
+   ...
+   c) O -> 배열에 O 가 몇개 있는지 확인 // 4개 
+        O 제거 // ["T", "S", "C", "H", "L"]; 
+ 
+
+
