@@ -1,4 +1,4 @@
-package another; // 패키지 이름 바꾸기
+package another; // 예금, 출금, 잔액 확인
 
 import java.util.Scanner;
 
