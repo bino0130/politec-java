@@ -1,4 +1,4 @@
-package another;
+package another; // 암호/복호화 알고리즘 만들기
 
 import java.util.ArrayList;
 import java.util.Scanner;
