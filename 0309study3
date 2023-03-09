@@ -1,0 +1,13 @@
+package Check;
+
+import another.Hello;
+
+public class TestC {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Hello nm = new Hello();
+		nm.inputNumbers2();
+	}
+
+}
