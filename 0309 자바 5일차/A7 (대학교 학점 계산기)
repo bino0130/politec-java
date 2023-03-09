@@ -1,0 +1,116 @@
+package chap01; // 패키지 이름 바꾸기
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Chap01 { // 과목 수, 각 과목의 단위, 각 과목의 학점 입력 후 평균값 출력
+	static Scanner sc = new Scanner(System.in);
+	static int subnum;
+	static double sumGrade;
+	static float avgGrade; 
+	static ArrayList<Integer> unitList = new ArrayList<Integer>();
+	static ArrayList<Double> gradeList = new ArrayList<Double>();
+
+	public static void main(String[] args) {
+		Chap01 call = new Chap01();
+		
+		call.putNumber(); // 과목 수 입력
+		call.putUnit(); // 과목 별 학점 입력
+		call.putGrade(); // 과목 별 성적 입력
+		
+		// sum(학점[0]*성적[0] + 학점[1]*성적[1] + ... ) / 과목 총 학점
+		for(int i = 0; i < subnum; i++) {
+			// get함수 = ArrayList 배열의 특정한 인덱스 n값을 뽑아주는 함수
+			sumGrade += unitList.get(i) * gradeList.get(i); 
+		}
+		
+		int sumUnit = getSumUnit();
+		
+		avgGrade = (float) (sumGrade / sumUnit);
+		System.out.println("평균 학점은 "+ avgGrade);
+	}
+
+	// for each 함수 활용해서 unitList배열 총합 구하는 메서드
+	public static int getSumUnit() { 
+		int result = 0;
+		for(int unit : unitList) {
+			result += unit;
+		}
+		return result;
+	}
+	
+	public void putNumber() {
+		System.out.println("과목 수를 입력하세요.");
+		subnum = sc.nextInt();
+		System.out.println("과목 수는 " + subnum + "개 입니다.\n");
+	}
+
+	public void putUnit() {
+		int countUnit = 0;
+		System.out.println("각 과목의 학점을 입력하세요.");
+		while (countUnit < subnum) {
+			unitList.add(sc.nextInt());
+			countUnit++;
+			if (countUnit == subnum) {
+				System.out.println("입력 끝\n");
+				break;
+			}
+		}
+	}
+
+	public void putGrade() {
+		int countGrade = 0;
+		System.out.println("각 과목의 등급을 입력하세요. (4.3기준)");
+
+		while (countGrade < subnum) {
+			// String값을 학점 치환 메서드에 scanner로 입력 후 gradeList 배열에 하나씩 추가
+			gradeList.add(convertGradeToNum(sc.next()));
+			countGrade++;
+			if (countGrade == subnum) {
+				System.out.println("입력 끝\n");
+				break;
+			}
+		}
+	}
+
+	// String값을 parameter(매개변수)로 받아 double값으로 return하는 학점 치환 메서드
+	public double convertGradeToNum(String grade) {
+		double convertedNum = 0;
+
+		switch(grade) {
+		case "A+":
+			convertedNum = 4.3;
+			break;
+		case "A0":
+			convertedNum = 4.0;
+			break;
+		case "B+":
+			convertedNum = 3.3;
+			break;
+		case "B0":
+			convertedNum = 3.0;
+			break;
+		case "C+":
+			convertedNum = 2.3;
+			break;
+		case "C0":
+			convertedNum = 2.0;
+			break;
+		case "D+":
+			convertedNum = 1.3;
+			break;
+		case "D0":
+			convertedNum = 1.0;
+			break;
+		case "F":
+			convertedNum = 0;
+			break;
+		default:
+			System.out.println("오입력");	
+		}
+        
+        return convertedNum;
+	}
+
+
+}
