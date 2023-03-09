@@ -1,0 +1,20 @@
+package another;
+
+public class Hello { // 재귀함수 예제
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int n = addToOne(5);
+		System.out.println(n);
+	}
+	
+	public static int addToOne(int n) {
+		if (n == 1) {
+			return 1;
+		} else {
+			return n * addToOne(n -1);
+		}
+		
+	}
+
+}
