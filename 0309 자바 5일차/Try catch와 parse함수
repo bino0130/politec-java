@@ -1,0 +1,24 @@
+package chap01;
+
+import java.util.Scanner;
+
+public class Chap01 { // Try catch구문과 Type.parseType() 함수
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		String a = sc.next();
+//		String b = sc.next();
+		
+		/* if의 else, switch의 default 역할을 하는 try catch 구문
+		 * Type.parseType()은 String 형태의 숫자를 내가 원하는 숫자 타입으로 바꿀 수 있다.
+		 */
+		try {
+			double doubleA = Double.parseDouble(a); // 
+			System.out.println(doubleA);
+		} catch (Exception e) {
+			System.out.println("Error");
+		}
+	}
+
+}
