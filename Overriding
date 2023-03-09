@@ -1,0 +1,36 @@
+package another;
+
+public class Hello implements Settings{
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Hello nm = new Hello(); // 오버라이딩할 때는 객체 생성 필요
+		nm.getName();
+		nm.getValues();
+		nm.getVersion();
+	}
+
+	//overriding : 덮어쓰다. 어떠한 틀을 가진 함수를 만들고 그 함수를 가져다가 쓰는 것, 상속 관계에서만 가능
+	// 1. 인터페이스 생성 후 메서드 이름 생성 ex) public void getName();
+	// 2. 메인 함수에서 객체 생성 ex) Hello nm = new Hello();
+	// 3. 오버라이드 메서드 호출
+	
+	@Override
+	public void getName() {
+		// TODO Auto-generated method stub
+		System.out.println("My application name is Line");
+	}
+
+	@Override
+	public void getValues() {
+		// TODO Auto-generated method stub
+		System.out.println("12345");
+	}
+
+	@Override
+	public void getVersion() {
+		// TODO Auto-generated method stub
+		System.out.println("1.8.1");
+	}
+}
+
