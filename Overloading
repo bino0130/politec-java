@@ -19,6 +19,7 @@ public class Hello {
 	public static void print(String line) {
 		System.out.println(line);
 	}
+	
 	//두 개의 메서드가 이름이 같지만 컴파일 에러가 나지 않음.
 }
 
