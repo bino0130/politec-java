@@ -1,0 +1,15 @@
+package another;
+
+import another.Hello;
+
+public class TestTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Hello nm = new Hello();
+		nm.inputNumbers2();
+		nm.inputNumbers4();
+		nm.inputNumbers5();
+	}
+
+}
