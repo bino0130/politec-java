@@ -1,0 +1,24 @@
+package another;
+
+
+public class Hello {
+	public static final int A = 1;
+	public static final int B = 2;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	//overload : 이름은 같으나 다른 구조를 가진 함수
+	
+	public static void print(int a, int b) {
+		System.out.println((a + b));
+	}
+	
+	public static void print(String line) {
+		System.out.println(line);
+	}
+	//두 개의 메서드가 이름이 같지만 컴파일 에러가 나지 않음.
+}
+
