@@ -1,6 +1,6 @@
 package Friend;
 
-//import Friend.PrintClass;
+//생성자 오버로드 실습2 참조
 
 public class Main {
 
