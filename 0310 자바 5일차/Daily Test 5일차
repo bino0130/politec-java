@@ -1,0 +1,68 @@
+package another;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class TestB {
+	public static final int ONETIME = 3; // 1번 문제
+	public static final int RANDOM = 4; // 1번 문제
+	public final static int EVENNUMBER = 0; // 5번 문제
+	public final static int ODDNUMBER = 1; // 5번 문제
+//    public ArrayList<int> name = new ArrayList<int>();
+	
+	public static void main(String[] args) {
+		
+		//4번 문제 (작동)
+		TestB name = new TestB();
+		int result = name.getRandomNumber(3);
+		System.out.println(result);
+		
+		//8번 문제 (작동)
+		isEvenNumber(7);
+	}
+	
+	//2번문제 틀 
+//	private int getRandomNumber(int a) { 
+//		return a;
+//	}
+	
+	//3번문제
+//	private int getRandomNumber(final int b) {
+//		int result = 0;
+//		if (b == 3) {
+//			result = (int)(Math.random() * 100);
+//		} else if (b == 4) {
+//			int sum = 0;
+////			for (int i = 0; i < ; i++) {
+////				sum += i;
+////			}
+//			result = 0;
+//		}
+//		return result;
+//	}
+	
+	// 3번풀이
+	private int getRandomNumber(int type) {
+		int cnt = 0;
+		if (type == ONETIME) {
+			return (int)(Math.random() * 100);
+		} else if (type == RANDOM) {
+			while (cnt < 100) {
+				cnt = cnt + (int)(Math.random() * 100);
+				cnt++;
+			}
+			return cnt;
+		}
+		return cnt;
+	}
+	
+	//6,7번 (작동)
+	public static void isEvenNumber(int c) {
+		if (c % 2 == EVENNUMBER) {
+			System.out.println("입력한 값은 짝수입니다. 2로 나눴을 때 나머지가 " + EVENNUMBER + "이네요!");
+		} else if (c % 2 == ODDNUMBER) {
+			System.out.println("입력한 값은 홀수입니다. 2로 나눴을 때 나머지가 " + ODDNUMBER + "이네요!");
+		}
+	}
+	
+}
