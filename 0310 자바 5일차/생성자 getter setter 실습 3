@@ -1,6 +1,6 @@
 package another;
 
-import java.util.Scanner;
+import java.util.Scanner; // 생성자 getter setter 실습 4 참조
 
 public class Practice {
 	NamePrice apple;
