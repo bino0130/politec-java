@@ -1,0 +1,17 @@
+package another;
+
+import java.util.Scanner;
+
+public class Practice {
+
+	public static void main(String[] args) {
+		NamePrice np = new NamePrice();  
+		System.out.println(np.getName()); // 괄호 안에 값을 넣지 않으면 기존 생성자에 설정되어 있는 값 출력
+		System.out.println(np.getPrice());
+		
+		NamePrice np1 = new NamePrice("melon",3000);
+		System.out.println(np1.getName()); // 괄호 안에 값을 넣으면 입력된 값 출력
+		System.out.println(np1.getPrice());
+	}
+	
+}
