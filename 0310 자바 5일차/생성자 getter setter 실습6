@@ -1,0 +1,40 @@
+package another;
+
+public class NamePrice {
+	String name = ""; // 필드변수 name 생성
+	int price = 0; // 필드변수 price 생성
+	
+	public NamePrice() {
+		this("apple", 1000); // 밑에 있는 자기 자신의 생성자를 불러와서 값을 대입
+	}
+	
+	public NamePrice(String name, int price) { // 생성자에는 return값이 없다. 
+		this.name = name;
+		this.price = price;
+	}
+	
+	// getter , setter 함수 사용
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public int getPrice() {
+		return price;
+	}
+
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+
+	public void printName() {
+		System.out.println("??");
+	}
+}
