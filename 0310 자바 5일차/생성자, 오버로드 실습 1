@@ -1,0 +1,17 @@
+package Friend;
+
+//import Friend.PrintClass;
+
+public class Main {
+
+	public static void main(String[] args) {
+		PrintClass pc = new PrintClass(4, 6);
+		System.out.println(pc.printAdd());
+		System.out.println(pc.printMulti());
+		
+		PrintClass pc1 = new PrintClass(5, 15);
+		System.out.println(pc1.printAdd());
+		System.out.println(pc1.printMulti());
+	}
+
+}
