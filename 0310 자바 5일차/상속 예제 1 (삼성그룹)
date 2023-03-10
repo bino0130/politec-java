@@ -1,0 +1,19 @@
+package 삼성전자;
+
+// 클래스 이재용은 클래스 이건희를 상속받는다.
+public class 이재용 extends 이건희 {
+	
+	public static void main(String[] args) {
+		이재용 lee = new 이재용();
+		lee.showBirth();
+		
+		System.out.println("이재용 : 1968.06.23");
+	}
+
+	// 우클릭 -> Source -> Override 클릭해서 부모 클래스의 메서드 상속
+	@Override
+	public void showBirth() { 
+		// TODO Auto-generated method stub
+		super.showBirth(); // super.메서드명() 은 부모 클래스의 메서드 상속
+	}
+}
