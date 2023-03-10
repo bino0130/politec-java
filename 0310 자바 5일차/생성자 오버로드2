@@ -1,0 +1,19 @@
+package Friend;
+
+public class PrintClass {
+	int a; // 클래스 밑에 전역변수 선언
+	int b; // 클래스 밑에 전역변수 선언
+	
+	public PrintClass(int a, int b) { // 클래스 밑에 클래스와 이름이 같은 생성자 선언
+		this.a = a; // 전역변수 a를 호출하는 this
+		this.b = b; // 전역변수 b를 호출하는 this
+	}
+	
+	public int printAdd() {
+		return this.a + this.b;
+	}
+	
+	public int printMulti() {
+		return this.a * this.b;
+	}
+}
