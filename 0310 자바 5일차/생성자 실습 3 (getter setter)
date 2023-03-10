@@ -1,0 +1,59 @@
+package another;
+
+import java.util.Scanner;
+
+public class Practice {
+	NamePrice apple;
+	NamePrice strawberry;
+	NamePrice grape;
+	NamePrice watermelon;
+
+	public static void main(String[] args) {
+		Practice pc = new Practice();
+		pc.initializing();
+		
+		while (true) {
+			int num = pc.showMenu();
+			pc.showInfo(num);
+		}
+	}
+	
+	public void showInfo(int num) {
+		String name = "";
+		int price = 0;
+		
+		if (num == 1) {
+			name = apple.getName();
+			price = apple.getPrice();
+		} else if (num == 2) {
+			name = strawberry.getName();
+			price = strawberry.getPrice();
+		} else if (num == 3) {
+			name = grape.getName();
+			price = grape.getPrice();
+		} else if (num == 4) {
+			name = watermelon.getName();
+			price = watermelon.getPrice();
+		} System.out.println("This fruit is " + name + ", and the price of it is " + price);
+	}
+	
+	public void initializing() {
+		apple = new NamePrice("red apple", 1000);
+		strawberry = new NamePrice("blue strawberry", 3000);
+		grape = new NamePrice("grape", 4000);
+		watermelon = new NamePrice("yello watermelon", 5000);
+	}
+	
+	public int showMenu() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Price");
+		System.out.println("1. Apple");
+		System.out.println("2. Strawberry");
+		System.out.println("3. Grape");
+		System.out.println("4. Watermelon");
+		grape.setName("White Grape"); // setter 함수를 활용해서 grape의 이름을 변경
+		grape.getName(); // getter 함수를 활용해서 grape의 변경된 이름을 출력 
+		int a = sc.nextInt();
+		return a;
+	}
+}
