@@ -1,0 +1,20 @@
+package another;
+
+import java.util.Scanner;
+
+public class Practice {
+	
+	public static void main(String[] args) {
+		Sub sub = new Sub();
+		sub.showInfo();
+	}
+	
+}
+
+// 이너 클래스 방식으로 클래스를 생성하고 메인 메서드에 객체를 생성해도 됨.
+// 하지만 이 방식은 지양함
+class Sub {
+	public void showInfo() {
+		System.out.println("nothing");
+	}
+}
