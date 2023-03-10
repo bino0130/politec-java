@@ -1,0 +1,5 @@
+package 퍼시스그룹;
+
+public interface 팀스 { // 인터페이스는 내용물이 없다. 메서드 비우기
+	public void showStatus();
+}
