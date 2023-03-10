@@ -8,13 +8,15 @@ P 7
 2. Date 함수 사용 -> duration 
 
 P 8
-1. String -> Date 형으로 변환 
-2. Date 함수 사용 -> add date 
+1. String -> Date 형으로 변환
+2. Date 함수 사용 -> add date
 
 P 14 
 1. an 이 와야 하는 경우의 수를 배열로 선언 : ["a", "e", "i", "o", "u"]; 
 2-1. String.substring(" "); // ["This", "is", "a", "apple"]; 
 2-2. String.contains( " a " / " an " );  
+자동문 안에 배열을 돌려서 a 뒤에 a,e,i,o,u가 오면 a를 an으로 변경. 자음이 오면 냅둠 (equals 사용)
+자동문 안에 배열을 돌려서 an 뒤에 자음이 오면 an을 a로 변경. 모음이 오면 냅둠. (not equals 사용)
 
 
 P 15 
@@ -42,6 +44,7 @@ A2와 비슷하게 가는데 while(true)문 안에 평균값, 최대값, 최소�
 
 
 A 3
+
 1) String.trim(); // 모든 띄어쓰기를 없앰 
 2) 모든 String 을 대문자로 변환 또는 소문자로 변환 
 3) 모든 character 를 하나씩 배열의  원소로 만듦 // ["I", "G" , "O", "T", "O", "S", "C", "H", "O", "O", "L"]; 
@@ -53,5 +56,7 @@ A 3
    c) O -> 배열에 O 가 몇개 있는지 확인 // 4개 
         O 제거 // ["T", "S", "C", "H", "L"]; 
  
-
+i, g, o, t, s, c, h, l
+처음엔 i 숫자 비교 -> g 숫자 비교 -> o 숫자 비교 -> t 숫자 비교 -> s 숫자 비교
+-> c 숫자 비교 -> h 숫자 비교 -> l 숫자 비교
 
