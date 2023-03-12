@@ -1,8 +1,9 @@
 package 삼성전자;
 
-// 클래스 이재용은 클래스 이건희를 상속받는다.
 // 자바는 다중 상속이 불가능하다. 하지만 extends에서만 다중 상속이 불가능하고, implements를 사용하면 가능하다고..
 // C++은 다중 상속이 가능하지만, Death Diamond라는 부작용이 있음.
+
+// 클래스 이재용은 클래스 이건희를 상속받는다.
 public class 이재용 extends 이건희 {
 	
 	public static void main(String[] args) {
