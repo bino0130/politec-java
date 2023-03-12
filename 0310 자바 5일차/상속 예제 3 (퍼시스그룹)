@@ -1,5 +1,7 @@
 package 퍼시스그룹;
 
+// implements는 extends와 다르게 다수의 부모를 상속 가능하다.
+// 하지만 interface로부터 상속받은 메서드는 모두 재정의(overriding)해야 한다.
 public class 퍼시스계열사 implements 팀스{
 
 	public static void main(String[] args) {
