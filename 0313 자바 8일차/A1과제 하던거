@@ -1,0 +1,33 @@
+package another;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class A1 {
+	static Scanner sc = new Scanner(System.in);
+	static ArrayList<Integer> arr = new ArrayList<Integer>();
+	public static void main(String[] args) {
+		
+		int cnt = 0;
+		int sum = 0;
+		double mean = 0;
+		
+		while(true) {
+			System.out.print("숫자를 입력하세요 -> ");
+			arr.add(sc.nextInt());
+			cnt++;
+			sum = 0;
+			
+			for (int i = 0; i < cnt; i++) {
+				sum += arr.get(i);
+				mean = sum / cnt; 
+			}
+			System.out.println("평균값 : " + mean);
+		}
+		
+
+	}
+	
+	
+
+}
