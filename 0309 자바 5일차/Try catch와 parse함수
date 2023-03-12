@@ -16,7 +16,7 @@ public class Chap01 { // Try catch구문과 Type.parseType() 함수
 		try {
 			double doubleA = Double.parseDouble(a); // 
 			System.out.println(doubleA);
-		} catch (Exception e) {
+		} catch (Exception e) { // catch 뒤에 (Exception e)는 꼭 써줘야 함.
 			System.out.println("Error");
 		}
 	}
