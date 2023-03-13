@@ -1,0 +1,19 @@
+package DataPKG;
+
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		int[][] numbers = {{1, 2, 3}, {4, 5}};
+		
+		// 2중 for문일 때 array.length는 총 몇줄인지 나타낸다.
+		// array[i].length는 i번째 줄에 몇개까지 배열이 있는지 나타낸다.
+		for (int i = 0; i < numbers.length; i++) {
+			for (int j = 0; j < numbers[i].length; j++) {
+				System.out.print(numbers[i][j] + " ");
+			}
+			System.out.println();
+		}
+	}
+
+}
