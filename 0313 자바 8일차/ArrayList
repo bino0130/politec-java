@@ -1,0 +1,58 @@
+package DataPKG;
+
+// // arraylist는 사이즈 지정을 해주지 않아도 된다.
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		ArrayList<String> name = new ArrayList<String>();
+		ArrayList<Integer> number = new ArrayList<Integer>();
+		name.add("kim");
+		name.add("lee");
+		name.add("john");
+		
+		System.out.println(name);
+		System.out.println(name.size());
+		System.out.println(name.get(2));
+		System.out.println();
+		
+		name.remove(1);
+		System.out.println("remove 부분 " + name);
+		System.out.println();
+		
+		name.set(1,  "park");
+		System.out.println("set 부분 " + name);
+		System.out.println(name.size());
+		System.out.println();
+		
+		name.add("lee");
+		System.out.println("add 부분 " + name);
+		System.out.println();
+		
+		// 내림차순
+		Collections.sort(name);
+		System.out.println("sort 부분 " + name);
+		System.out.println();
+		
+		// 오름차순
+		Collections.reverse(name);
+		System.out.println(name);
+		
+		
+		for (int i = 0; i < 10; i++) {
+			number.add((int)(Math.random() * 10));
+		}
+		System.out.println(number);
+		
+		Collections.sort(number);
+		System.out.println(number);
+		
+		Collections.reverse(number);
+		System.out.println(number);
+	}
+
+}
