@@ -1,0 +1,23 @@
+package array;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Stack<Integer> values = new Stack<Integer>();
+		values.add(1);
+		values.add(2);
+		values.add(3);
+		System.out.println(values);
+		System.out.println(values.pop()); // 3
+		System.out.println(values.pop()); // 2
+		System.out.println(values.pop()); // 1
+	}
+
+}
