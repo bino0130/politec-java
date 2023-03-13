@@ -1,0 +1,87 @@
+package another;
+
+public class TestA extends Parents{
+
+	public TestA(String name, int korean, int english, int math) {
+		super(name, korean, english, math);
+		// TODO Auto-generated constructor stub
+	}
+	
+	public TestA(String name) {
+		super(name);
+		// TODO Auto-generated constructor stub
+	}
+
+	public static void main(String[] args) {
+		TestA cal = new TestA("철수", 90, 70, 80);
+		cal.showInformation();
+	}
+
+	@Override
+	public void showInformation() {
+		// TODO Auto-generated method stub
+		super.showInformation();
+		System.out.println((super.korean + super.english + super.math) / 3);
+	}
+
+}
+
+class Parents {
+	String name;
+	int korean;
+	int english;
+	int math;
+	
+	public Parents(String name) {
+		this.name = name;
+		korean = 0;
+		english = 0;
+		math = 0;
+	}
+	
+	public Parents(String name, int korean, int english, int math) {
+		this.name = name;
+		this.korean = korean;
+		this.english = english;
+		this.math = math;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getKorean() {
+		return korean;
+	}
+
+	public void setKorean(int korean) {
+		this.korean = korean;
+	}
+
+	public int getEnglish() {
+		return english;
+	}
+
+	public void setEnglish(int english) {
+		this.english = english;
+	}
+
+	public int getMath() {
+		return math;
+	}
+
+	public void setMath(int math) {
+		this.math = math;
+	}
+	
+	public void showInformation() {
+		System.out.println("이름 : " + name);
+		System.out.println("국어점수 : " + korean);
+		System.out.println("영어점수 : " + english);
+		System.out.println("수학점수 : " + math);
+	}
+}
