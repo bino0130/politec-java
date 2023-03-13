@@ -1,0 +1,27 @@
+package another;
+
+import java.util.Scanner;
+
+public class A6 {
+	static int f0 = 0;
+	static int f1 = 1;
+	static int f2 = 0;
+
+	public static void main(String[] args) {
+		int count = 10;
+		
+		System.out.print(f0 + " " + f1);
+		printNum(8);
+
+	}
+
+	static void printNum(int count) {
+		if (count > 0) {
+			f2 = f0 + f1;
+			f0 = f1;
+			f1 = f2;
+			System.out.print(" " + f2);
+			printNum(count - 1);
+		}
+	}
+}
