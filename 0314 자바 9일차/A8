@@ -18,30 +18,36 @@ public class Chap01 {
 
 		int cnt = 0;
 
-		String a = sc.next();
-		String b = sc.next();
-
-		String[] arr1 = a.split("");
-		for (int i = 0; i < arr1.length; i++) {
-			list1.add(arr1[i]);
-			hash1.add(arr1[i]);
-		}
-
-		String[] arr2 = b.split("");
-		for (int i = 0; i < arr2.length; i++) {
-			list2.add(arr2[i]);
-			hash2.add(arr2[i]);
-		}
-
-		String str1 = Arrays.deepToString(list1.toArray());
-		String str2 = Arrays.deepToString(list2.toArray());
-
-			for (int i = 0; i < hash1.size(); i++) {
-				if (hash1.contains(list2.get(i))) {
-					cnt++;
-				}
+		try {
+			String a = sc.next();
+			String b = sc.next();
+			
+			String[] arr1 = a.split("");
+			for (int i = 0; i < arr1.length; i++) {
+				list1.add(arr1[i]);
+				hash1.add(arr1[i]);
 			}
-
+			
+			String[] arr2 = b.split("");
+			for (int i = 0; i < arr2.length; i++) {
+				list2.add(arr2[i]);
+				hash2.add(arr2[i]);
+			}
+			
+		} catch (InputMismatchException e) {
+			System.out.println("error");
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println("error");
+		} catch (NullPointerException e) {
+			System.out.println("error");
+		}
+			
+		for (int i = 0; i < hash1.size(); i++) {
+			if (hash1.contains(list2.get(i))) {
+				cnt++;
+			}
+		}
+		
 		System.out.println("1 : " + list1.size());
 		System.out.println("2 : " + list2.size());
 		System.out.println("3 : " + cnt);
