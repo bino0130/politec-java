@@ -1,0 +1,18 @@
+package another;
+
+// thread는 Runnable 클래스를 상속받아서 사용할 수도 있다.
+public class Practice implements Runnable {
+
+    public static void main(String[] args) {
+    	Practice main = new Practice();
+    	Thread thread = new Thread(main); // 객체로 생성된 main을 thread()안에 넣는다.
+    	thread.start();
+    }
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		System.out.println("Thread");
+	}
+   
+}
