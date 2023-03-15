@@ -1,0 +1,58 @@
+package PKG;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Main implements Operation{
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		Main cal = new Main();
+		while(true) {
+			System.out.println("채팅 시작");
+			String input = sc.nextLine();
+			if (input.contains("bye")) {
+				System.out.println("종료");
+				break;
+			}
+			
+			
+			String answer = cal.chat(input);
+			input = "\"" + input + "\"\n";
+			cal.writeFile(input);
+			System.out.println(answer);
+			answer = "\"" + answer + "\"\n";
+			cal.writeFile(answer);
+			
+		}
+	}
+
+	@Override
+	public String chat(String text) {
+		String[] question = new String[]{"happy", "hello", "old", "name", "bye"};
+		String[] answer = new String[]{"it's dope,man", "hey ya", "take a guess", "it's confidential", "see ya"};
+		String ret = "lol";
+		for (int i = 0; i < question.length; i++) {
+			if(text.contains(question[i])) {
+				ret = answer[i];
+				break;
+			} 
+		}
+		
+		return ret;
+	}
+
+	@Override
+	public void writeFile(String text) {
+		try {
+			FileWriter fw = new FileWriter("C:\\Users\\남정현\\Desktop\\out.csv", true);
+			fw.write(text);
+			fw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}
