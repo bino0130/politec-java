@@ -1,0 +1,77 @@
+package another;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.InputMismatchException;
+import java.util.List;
+import java.util.Scanner;
+
+// 아스키코드 활용 문자 변경
+// char(문자)타입을 byte(숫자)타입으로 전환 후
+// 임의의 숫자를 더하거나 빼서 변경한 뒤
+// byte형태의 숫자를 char 타입으로 변환
+// 숫자->영어 : 아스키코드로 전환 후 + 49
+// 영어->숫자 : 아스키코드로 전환 후 - 49
+public class A8 {
+
+	public static void main(String[] args) {
+		A8 cal = new A8();
+		
+		cal.showMenu();
+		// 메뉴 선택
+		String input = cal.choiceScanner();
+		if (input.equals("1")) {
+			// 암호화 메서드 호출
+			
+		} else if (input.equals("2")) {
+			// 복호화 메서드 호출
+			
+		} else if (input.equals("3")) {
+			System.out.println("Bye!");
+		}
+	}
+	
+	public void showMenu() {
+		System.out.println("#Menu");
+		System.out.println("1. Encoder");
+		System.out.println("2. Decoder");
+		System.out.println("3. Exit");
+		
+	}
+	
+	public String choiceScanner() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("메뉴를 선택하세요 → ");
+		return sc.next();
+	}
+	
+	public String numScanner() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("숫자를 입력하세요 → ");
+		return sc.next();
+	}
+	
+	public void encodeNum(String input) {
+		for(int i = 0; i < input.length(); i++) {
+			byte b = 0;
+			if(input.charAt(i) > 47 && input.charAt(i) < 58) {
+				b += (byte)input.charAt(i) + 49;
+				char c = (char) b;
+				System.out.print(c);
+			}
+		}
+	}
+	
+	public void decodeNum(String input) {
+//		for(int i = 0; i < input.length(); i++) {
+//			byte b = 0;
+//			if(input.charAt(i) > 47 && input.charAt(i) < 58) {
+//				b += (byte)input.charAt(i) + 49;
+//				char c = (char) b;
+//				System.out.print(c);
+//			}
+//		}
+	}
+}
