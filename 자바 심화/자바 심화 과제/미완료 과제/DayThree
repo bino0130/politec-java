@@ -1,0 +1,24 @@
+package advanced;
+
+public class DayThree {
+
+	public static void main(String[] args) {
+		//////////////////////////////
+		double fSin; // double형 변수 fSin
+		
+		for(int i = 0; i < 361; i++) { // sin함수를 0도부터 360도까지 출력하는 반복문 실행
+			
+			fSin = Math.sin(i * Math.PI / 180);
+			
+			System.out.printf("%d sin -> %f\n", i , fSin);
+			
+		}
+		
+		for (int i = 0; i < 361; i++) {
+			fSin = Math.sin(i * Math.PI / 180);
+			
+			int iSpace = (int)((1.0 - fSin) * 50);
+		}
+	}
+
+}
