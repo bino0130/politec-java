@@ -1,0 +1,25 @@
+package advanced;
+
+public class SecondPpt { // 클래스 선언
+
+	public static void main(String[] args) {
+		int k10_i = 10; //int형 변수 i를 10으로 초기화
+		byte k10_b = (byte)k10_i; // i를 byte로 형변환한 뒤 b값에 대입
+		System.out.printf("[int -> byte] i = %d -> b = %d\n", k10_i, k10_b); // i,b 모두 10으로 출력
+		
+		k10_i = 300; //int형 변수 i를 300으로 변경
+		k10_b = (byte)k10_i; // i를 byte로 형변환한 뒤 b값에 대입
+		System.out.printf("[int -> byte] i = %d -> b = %d\n", k10_i, k10_b); // i는 300으로 출력되지만 b는 44가 출력된다.
+		// byte는 -128부터 127까지 표현할 수 있고, 그 이상의 값을 출력하면 원래 표현하고자 하는 값이 소실되므로 엉뚱한 값이 출력될 수 있음
+		
+		k10_b = 10; // b값을 10으로 변경
+		k10_i = (int)k10_b; // b값을 int로 형변환한 뒤 i에 대입
+		System.out.printf("[byte -> int] b = %d -> i = %d\n", k10_b, k10_i); // b와 i 모두 10으로 출력됨
+		
+		k10_b = -2; // b값을 10으로 변경
+		k10_i = (int)k10_b; // b값을 int로 형변환한 뒤 i에 대입
+		System.out.println("i = " + Integer.toBinaryString(k10_i)); // i = 11111111111111111111111111111110로 출력됨
+		// int는 32비트로 구성되고 2진수에서 제일 앞비트는 양수일때 0, 음수일때 1로 표현한다.
+	}
+
+}
