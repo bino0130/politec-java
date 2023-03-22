@@ -1,4 +1,4 @@
-package chap01;
+package advanced;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
-public class Practice {
+public class DayThree {
 
 	public static void main(String[] args) {
 		//////////////////////////////
@@ -122,7 +122,7 @@ public class Practice {
 		//////////////////////////////
 
 		//////////////////////////////
-		// #7. 영수증 출력 (1)
+		// #7. 영수증 출력 (한양김치찌개)
 		// 거래일시는 calendar함수 getTime()으로 출력하면 된다
 		// 콤마 찍기도 해주기
 		// 세전가격 구하기 : 세후가격 / 11 * 10
@@ -156,11 +156,11 @@ public class Practice {
 //		System.out.printf("--------------------------------------\n"); // 구분선 출력
 //		System.out.printf("%13s%s\n", " " ,"* 감사합니다 *"); // 감사합니다가 가운데에 오게끔 공백 맞추고 감사합니다 출력
 //		System.out.printf("%36s", "표준V2.08_20200212"); // 표준 버전 출력
-//	}
+//	
 		//////////////////////////////
 
 		//////////////////////////////
-		// #8. 영수증 출력 (2)
+		// #8. 영수증 출력 (다이소)
 		// 자바 한글 자르기 구글링
 		// 바코드 표시는 생략
 		// 최대치 37로 해도 될듯
@@ -246,11 +246,10 @@ public class Practice {
 //		System.out.printf("------------------------------------------\n"); // 구분 선
 //		System.out.printf("◈다이소 멤버십 앱 또는 홈페이지에 접속하셔"); // 다이소 안내문구
 //		System.out.printf("서 회원가입 후 다양한 혜택을 누려보세요!◈"); // 다이소 안내문구
-//	}
 	//////////////////////////////
 
 	//////////////////////////////
-	// #9. 영수증 출력 (3)
+	// #9. 영수증 출력 (이마트)
 //		String [] itemname = {"초코파이", "바나나우유", "건포도", "오렌지주스", "초코에몽", "밀크티",
 //								"텀블러", "어항", "신라면", "짜파게티", "녹차티백", "커피믹스", "보드마카",
 //								"핸드크림", "모니터", "TV", "형광등", "아이폰", "아이패드", "운동화",
@@ -259,50 +258,59 @@ public class Practice {
 //		int [] price = {3500, 1300, 2500, 2000, 1500, 3500, 5000, 5300, 2650, 2850, 5000, 5500, 3000,
 //						6000, 200000, 1000000, 5000, 600000, 950000, 120000, 3500, 4800, 3000, 55000,
 //						4000, 1200000, 600000, 15000, 3500, 5000};
-//		}
+//		
 	//////////////////////////////
+		
+} // main 메서드 끝나는 중괄호니까 지우지 말기
 
-	public static String lengthLimit(String inputStr, int limit, String fixStr) { // 한글 쪼개주는 메서드
-		if (inputStr == null)
-			return "";
+	public static String lengthLimit(String k10_inputStr, int k10_limit, String k10_fixStr) { // 한글 쪼개주는 메서드
+		if (k10_inputStr == null) // String타입 변수 k10_inputStr이 null값이라면
+			return ""; // 아무것도 리턴하지 않음
 
-		if (limit <= 0)
-			return inputStr;
+		if (k10_limit <= 0) // int타입 변수 limit이 0보다 작거나 같다면
+			return k10_inputStr;  // k10_inputStr 리턴
 
-		byte[] strbyte = null;
+		byte[] k10_strbyte = null; // byte타입 배열 strbyte null값으로 초기화
 
-		strbyte = inputStr.getBytes();
+		k10_strbyte = k10_inputStr.getBytes(); // k10_inputStr을 바이트코드로 인코딩한 뒤 배열 strbyte에 저장
 
-		if (strbyte.length <= limit) {
-			return inputStr;
+		if (k10_strbyte.length <= k10_limit) { // 만약 strbyte의 길이가 limit보다 작거나 같다면
+			return k10_inputStr; // k10_inputStr 리턴
 		}
 
-		char[] charArray = inputStr.toCharArray();
+		// String.toCharArray()는 문자열을 한 글자씩 쪼개서 char타입의 배열에 집어넣는 메서드
+		char[] k10_charArray = k10_inputStr.toCharArray(); // k10_inputStr을 한 글자씩 쪼개서 char타입 배열 charArray에 넣는다.
 
-		int checkLimit = limit;
-		for (int i = 0; i < charArray.length; i++) {
-			if (charArray[i] < 256) {
-				checkLimit -= 1;
-			} else {
-				checkLimit -= 2;
+		int k10_checkLimit = k10_limit; // int타입 변수 checkLimit 초기화
+		for (int i = 0; i < k10_charArray.length; i++) { // i가 0부터 charArray.length() - 1까지 +1씩 증가하면서 작동하는 반복문 실행 
+			if (k10_charArray[i] < 256) { // 만약 charArray[i]가 256보다 작다면
+				k10_checkLimit -= 1; // checkLimit = -1
+			} else { // 256보다 크거나 같다면
+				k10_checkLimit -= 2; // checkLimit = -2
 			}
 
-			if (checkLimit <= 0) {
-				break;
+			if (k10_checkLimit <= 0) { // 만약 checkLimit이 0보다 작거나 같다면
+				break; // break
 			}
 		}
 
 		// 대상 문자열 마지막 자리가 2바이트의 중간일 경우 제거함
-		byte[] newByte = new byte[limit + checkLimit];
+		byte[] k10_newByte = new byte[k10_limit + k10_checkLimit]; // 크기가 limit + checkLimit인 byte타입 배열 newByte 선언
 
-		for (int i = 0; i < newByte.length; i++) {
-			newByte[i] = strbyte[i];
+		for (int i = 0; i < k10_newByte.length; i++) { // i가 0부터 newByte.length() - 1까지 1씩 증가하면서 작동하는 반복문 실행
+			k10_newByte[i] = k10_strbyte[i]; // newByte[i] = strbyte[i]
 		}
 
-		if (fixStr == null) {
-			return new String(newByte);
+		if (k10_fixStr == null) { // 만약 fixStr이 null이라면
+			
+			/* new 연산자를 통해 new String()을 생성하면
+			 * 기존에 String타입 변수가 생성되던 String pool에 생성되지 않고
+			 * Java Heap 영역에 생석이 된다. 같은 문자열 "abcd"를 가지고 있어도
+			 * String alpha = "abcd"와 new String("abcd")는 서로 다르다.
+			 */ 
+			return new String(k10_newByte); // new 연산자를 통해 new String(newByte) 리턴
 		} else {
-			return new String(newByte) + fixStr;
+			return new String(k10_newByte) + k10_fixStr; // new 연산자를 통해 new String(newbyte) + fixStr 리턴
 		}
 	}
 }
