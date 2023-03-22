@@ -246,29 +246,54 @@ public class DayThree {
 //		System.out.printf("------------------------------------------\n"); // 구분 선
 //		System.out.printf("◈다이소 멤버십 앱 또는 홈페이지에 접속하셔"); // 다이소 안내문구
 //		System.out.printf("서 회원가입 후 다양한 혜택을 누려보세요!◈"); // 다이소 안내문구
-	//////////////////////////////
+		//////////////////////////////
 
-	//////////////////////////////
-	// #9. 영수증 출력 (이마트)
-//		String [] itemname = {"초코파이", "바나나우유", "건포도", "오렌지주스", "초코에몽", "밀크티",
-//								"텀블러", "어항", "신라면", "짜파게티", "녹차티백", "커피믹스", "보드마카",
-//								"핸드크림", "모니터", "TV", "형광등", "아이폰", "아이패드", "운동화",
-//								"닭가슴살", "1.5L 우유", "1.5L콜라", "가디건", "목캔디", "컴퓨터",
-//								"그래픽카드", "A4용지", "초콜릿", "멀티탭"};
-//		int [] price = {3500, 1300, 2500, 2000, 1500, 3500, 5000, 5300, 2650, 2850, 5000, 5500, 3000,
-//						6000, 200000, 1000000, 5000, 600000, 950000, 120000, 3500, 4800, 3000, 55000,
-//						4000, 1200000, 600000, 15000, 3500, 5000};
-//		
-	//////////////////////////////
-		
-} // main 메서드 끝나는 중괄호니까 지우지 말기
+		//////////////////////////////
+		// #9. 영수증 출력 (이마트)
+		DecimalFormat k10_df = new DecimalFormat("###,###,###,###,###");
+		Calendar k10_calt = Calendar.getInstance();
+		SimpleDateFormat k10_sdt = new SimpleDateFormat("YYYY/MM/dd HH:mm:ss");
+
+		String[] k10_itemname = { "초코파이", "바나나우유", "건포도", "오렌지주스", "초코에몽", "밀크티", "텀블러", "어항", "신라면", "짜파게티", "녹차티백",
+				"커피믹스", "보드마카", "핸드크림", "모니터", "TV", "형광등", "아이폰", "아이패드", "운동화", "닭가슴살", "1.5L 우유", "1.5L콜라", "가디건",
+				"목캔디", "컴퓨터", "그래픽카드", "A4용지", "초콜릿", "멀티탭" }; // %7s
+		int[] k10_price = { 3500, 1300, 2500, 2000, 1500, 3500, 5000, 5300, 2650, 2850, 5000, 5500, 3000, 6000, 200000,
+				1000000, 5000, 600000, 950000, 120000, 3500, 4800, 3000, 55000, 4000, 1200000, 600000, 15000, 3500,
+				5000 }; // %7s
+		int[] k10_amount = { 1, 5, 4, 6, 8, 9, 5, 3, 8, 6, 5, 3, 4, 10, 5, 1, 1, 5, 1, 1, 3, 4, 5, 5, 2, 5, 1, 1, 4, 4,
+				6 }; // %2s
+
+		System.out.printf("%15s이마트 죽전점 (031)888-1234\n", " ");
+		System.out.printf("%15s206-86-50913 김희석\n", " ");
+		System.out.printf("%15s용인 수지구 포은대로 552\n", " ");
+		System.out.printf("영수증 미지참시 교환/환불 불가\n");
+		System.out.printf("정상제품에 한함, 30일 이내(신선 7일)\n");
+		System.out.printf("※일부 브랜드매장 제외(매장 고지물참조)\n");
+		System.out.printf("교환/환불 구매점에서 가능(결제카드 지참)\n\n");
+		System.out.printf("[구 매]%s", k10_sdt.format(k10_calt.getTime()));
+		System.out.printf("%3sPOS:0011-9861\n", " ");
+		System.out.printf("------------------------------------------\n");
+		System.out.printf("%2s상 품 명%4s단  가%3s수량%9s금  액\n", " ", " ", " ", " ");
+		for (int k10_i = 0; k10_i < k10_itemname.length; k10_i++) {
+			if (k10_i % 5 == 0) {
+				System.out.printf("------------------------------------------\n");
+			}
+			System.out.printf("%7s\n", k10_itemname[k10_i]);
+
+		}
+		System.out.printf("------------------------------------------\n"); // 이
+		System.out.printf("0041 KB 국민%9s541707**0484/35860658\n", " "); // 세 문장이
+		System.out.printf("------------------------------------------\n"); // 기준
+		//////////////////////////////
+
+	} // main 메서드 끝나는 중괄호니까 지우지 말기
 
 	public static String lengthLimit(String k10_inputStr, int k10_limit, String k10_fixStr) { // 한글 쪼개주는 메서드
 		if (k10_inputStr == null) // String타입 변수 k10_inputStr이 null값이라면
 			return ""; // 아무것도 리턴하지 않음
 
 		if (k10_limit <= 0) // int타입 변수 limit이 0보다 작거나 같다면
-			return k10_inputStr;  // k10_inputStr 리턴
+			return k10_inputStr; // k10_inputStr 리턴
 
 		byte[] k10_strbyte = null; // byte타입 배열 strbyte null값으로 초기화
 
@@ -282,7 +307,7 @@ public class DayThree {
 		char[] k10_charArray = k10_inputStr.toCharArray(); // k10_inputStr을 한 글자씩 쪼개서 char타입 배열 charArray에 넣는다.
 
 		int k10_checkLimit = k10_limit; // int타입 변수 checkLimit 초기화
-		for (int i = 0; i < k10_charArray.length; i++) { // i가 0부터 charArray.length() - 1까지 +1씩 증가하면서 작동하는 반복문 실행 
+		for (int i = 0; i < k10_charArray.length; i++) { // i가 0부터 charArray.length() - 1까지 +1씩 증가하면서 작동하는 반복문 실행
 			if (k10_charArray[i] < 256) { // 만약 charArray[i]가 256보다 작다면
 				k10_checkLimit -= 1; // checkLimit = -1
 			} else { // 256보다 크거나 같다면
@@ -302,12 +327,12 @@ public class DayThree {
 		}
 
 		if (k10_fixStr == null) { // 만약 fixStr이 null이라면
-			
-			/* new 연산자를 통해 new String()을 생성하면
-			 * 기존에 String타입 변수가 생성되던 String pool에 생성되지 않고
-			 * Java Heap 영역에 생석이 된다. 같은 문자열 "abcd"를 가지고 있어도
-			 * String alpha = "abcd"와 new String("abcd")는 서로 다르다.
-			 */ 
+
+			/*
+			 * new 연산자를 통해 new String()을 생성하면 기존에 String타입 변수가 생성되던 String pool에 생성되지 않고
+			 * Java Heap 영역에 생석이 된다. 같은 문자열 "abcd"를 가지고 있어도 String alpha = "abcd"와 new
+			 * String("abcd")는 서로 다르다.
+			 */
 			return new String(k10_newByte); // new 연산자를 통해 new String(newByte) 리턴
 		} else {
 			return new String(k10_newByte) + k10_fixStr; // new 연산자를 통해 new String(newbyte) + fixStr 리턴
