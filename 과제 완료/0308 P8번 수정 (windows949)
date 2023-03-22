@@ -1,0 +1,51 @@
+package chap01;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Scanner;
+
+public class Chap01 {
+
+	public static void main(String[] args) {
+		Chap01 call = new Chap01(); // 메서드 호출하는 객체 생성
+		
+		call.print(); // print메서드 호출
+	}
+	
+	public String inputDate() { // 날짜 입력받는 스캐너 메서드
+		Scanner sc = new Scanner(System.in);
+		String result = sc.next();
+		return result;
+	}
+	
+	public int addDate() { // 더할 날짜 입력받는 스캐너 메서드
+		Scanner sc = new Scanner(System.in);
+		return sc.nextInt();
+	}
+	
+	public void print() {
+		Calendar cal = Calendar.getInstance(); // 캘린더 함수 생성
+		SimpleDateFormat sdfin = new SimpleDateFormat("yyyyMMdd"); // SimpleDateFormat 생성
+		SimpleDateFormat sdfout = new SimpleDateFormat("yyyy-MM-dd"); // SimpleDateFormat 생성
+		
+		
+		System.out.println("원하시는 날짜를 입력하세요.");
+		String putDate = inputDate(); // 변수 putDate에 inputDate 저장
+		System.out.println("더할 날짜를 입력하세요.");
+		int adDate = addDate(); // 변수 adDate에 addDate 저장
+		
+		Date changeDate = null; // 변수 changeDate null값으로 초기화
+		try {
+			changeDate = sdfin.parse(putDate); // String형식인 putDate를 Date형식으로 변환
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		cal.setTime(changeDate); // 변경된 시간 세트
+		
+		cal.add(cal.DATE, adDate); // 변경된 시간에 날짜 임의로 더하거나 빼기
+		String finalDate = sdfout.format(cal.getTime()); // String형 변수에 최종적으로 변경된 시간 String형으로 변환해서 저장
+		System.out.println("변경된 날짜는 " + finalDate + "입니다."); // 출력
+	}
+}
