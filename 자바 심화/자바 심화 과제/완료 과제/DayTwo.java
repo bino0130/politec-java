@@ -331,61 +331,63 @@ public class DayTwo {
 
 		//////////////////////////////
 		// 띄어쓰기 연습
-		for (int k10_i = 0; k10_i < 10; k10_i++) { // i가 0 부터 9까지 작동하는 반복문 실행
-			for (int k10_j = 0; k10_j < k10_i; k10_j++) { // j가 0부터 i - 1까지 작동하는 반복문 실행 (2중 for문)
-				System.out.printf(" "); // 공백 출력
-			}
-			System.out.printf("%d\n", k10_i); // i 출력
-		}
+//		for (int k10_i = 0; k10_i < 10; k10_i++) { // i가 0 부터 9까지 작동하는 반복문 실행
+//			for (int k10_j = 0; k10_j < k10_i; k10_j++) { // j가 0부터 i - 1까지 작동하는 반복문 실행 (2중 for문)
+//				System.out.printf(" "); // 공백 출력
+//			}
+//			System.out.printf("%d\n", k10_i); // i 출력
+//		}
 		//////////////////////////////
 
 		//////////////////////////////
 		// 숫자읽기 고급
-//		int k10_iNumVal = 1001034567; // int형 변수 iNumVal 1001034567로 값 초기화
-//
-//		String k10_sNumVal = String.valueOf(k10_iNumVal); // int형 변수 iNumVal을 String형 변수 sNumVal로 변환
-//		String k10_sNumVoice = ""; // String형 변수 sNumVoice ""으로 초기화
-//		System.out.printf("-> %s [%d자리]\n", k10_sNumVal, k10_sNumVal.length()); // 1001034567, [10자리] 출력
-//		int k10_i, k10_j; // int형 변수 i,j 선언
-//
-//		String[] k10_units = { "영", "일", "이", "삼", "사", "오", "육", "칠", "팔", "구" }; // units라는 배열에 0부터 9까지 값 초기화
-//		String[] k10_unitX = { "", "십", "백", "천", "만", "십", "백", "천", "억", "십" }; // unitX라는 배열에 ""부터 "십"까지 값 초기화
-//
-//		k10_i = 0; // 변수 i 0으로 초기화
-//		k10_j = k10_sNumVal.length() - 1; // 변수 j 9로 초기화
-//		
-//		while(true) { // 무한루프문
-//			if(k10_i >= k10_sNumVal.length()) break; // 만약 i값이 sNumVal의 길이와 같으면 break
-//			
-//			System.out.printf("%s[%s]", 
-//					k10_sNumVal.substring(k10_i, k10_i + 1), // sNumVal의 i번째 자리 문자를 %s에 대입
-//					
-//					// sNumVal의 i번째 자리 문자를 정수형으로 바꾼게 x라고 했을 때,
-//					// 배열 units의 units[x]번째 자리에 있는 String 문자를 [%s]에 대입
-//					k10_units[Integer.parseInt(k10_sNumVal.substring(k10_i, k10_i + 1))]);
-//			
-//			if(k10_sNumVal.substring(k10_i, k10_i + 1).equals("0")) { // sNumVal의 i번째 자리 문자가 0이라면
-//				// 해당 자리가 0일땐 단위값을 안붙이는데 억, 만 자리는 붙인다.
-//				// 이백 사만 이십 ..... 이백 만원
-//				// 억, 만 자리가 아니면 아무것도 하지 않음
-//				if(k10_unitX[k10_j].equals("만") || k10_unitX[k10_j].equals("억")) { // unitX의 j번째 문자가 "만"이거나 "억"이라면
-//					k10_sNumVoice += "" + k10_unitX[k10_j]; // 해당자리가 0이면 단위만 붙여줌
-//				} else {
-//					// 아무것도 하지 않음
-//				}
-//			} else { // sNumVal의 i번째 자리 문자가 0이 아니면
-//				k10_sNumVoice = k10_sNumVoice
-//						
-//								// sNumVal의 i번째 문자를 정수형으로 바꾼 걸 X라고 했을때
-//								// 배열 units의 units[X] 번째 문자
-//							+	k10_units[Integer.parseInt(k10_sNumVal.substring(k10_i, k10_i + 1))]
-//									
-//								// 배열 unitX의 unitX[j] 번째 문자
-//							+	k10_unitX[k10_j];
-//			}
-//			k10_i++; k10_j--; // i와 j 각각 1씩 증가
-//		}
-//		System.out.printf("\n %s[%s]\n", k10_sNumVal, k10_sNumVoice); //sNumVal과 sNumVoice 출력
+		int k10_iNumVal = 2000000000; // int형 변수 iNumVal 2147483647로 값 초기화
+
+		String k10_sNumVal = String.valueOf(k10_iNumVal); // int형 변수 iNumVal을 String형 변수 sNumVal로 변환
+		String k10_sNumVoice = ""; // String형 변수 sNumVoice ""으로 초기화
+		System.out.printf("-> %s [%d자리]\n", k10_sNumVal, k10_sNumVal.length()); // 2147483647, [10자리] 출력
+		int k10_i, k10_j; // int형 변수 i,j 선언
+
+		String[] k10_units = { "영", "일", "이", "삼", "사", "오", "육", "칠", "팔", "구" }; // units라는 배열에 0부터 9까지 값 초기화
+		String[] k10_unitX = { "", "십", "백", "천", "만", "십", "백", "천", "억", "십" }; // unitX라는 배열에 ""부터 "십"까지 값 초기화
+
+		k10_i = 0; // 변수 i 0으로 초기화
+		k10_j = k10_sNumVal.length() - 1; // 변수 j sNumVal.length() - 1로 초기화
+		
+		while(true) { // 무한루프문
+			if(k10_i >= k10_sNumVal.length()) break; // 만약 i값이 sNumVal의 길이와 같으면 break
+			
+			System.out.printf("%s[%s]", 
+					k10_sNumVal.substring(k10_i, k10_i + 1), // sNumVal의 i번째 자리 문자를 %s에 대입
+					
+					// sNumVal의 i번째 자리 문자를 정수형으로 바꾼게 x라고 했을 때,
+					// 배열 units의 units[x]번째 자리에 있는 String 문자를 [%s]에 대입
+					k10_units[Integer.parseInt(k10_sNumVal.substring(k10_i, k10_i + 1))]);
+			
+			if(k10_sNumVal.substring(k10_i, k10_i + 1).equals("0")) { // sNumVal의 i번째 자리 문자가 0이라면
+				
+				if (k10_sNumVal.length() < 9 && k10_sNumVal.length() > 5) { // sNumVal의 길이가 십만에서 천만일때
+					if (k10_unitX[k10_j].equals("만") == true) { // unitX의 [j]번째 자리가 0이고 '만'이라면
+						k10_sNumVoice += "" + k10_unitX[k10_j]; // '만'만 출력
+					}
+				} else if ( k10_sNumVal.length() > 8) { // sNumVal의 길이가 억 이상일때
+					if(k10_unitX[k10_j].equals("만") == false && k10_unitX[k10_j].equals("억") == true) {  // // unitX의 [j]번째 자리가 0이고 '억'이라면
+						k10_sNumVoice += "" + k10_unitX[k10_j]; // '억'만 출력
+					}
+				}
+			} else { // sNumVal의 i번째 자리 문자가 0이 아니면
+				k10_sNumVoice = k10_sNumVoice
+						
+								// sNumVal의 i번째 문자를 정수형으로 바꾼 걸 X라고 했을때
+								// 배열 units의 units[X] 번째 문자
+							+	k10_units[Integer.parseInt(k10_sNumVal.substring(k10_i, k10_i + 1))]
+									
+								// 배열 unitX의 unitX[j] 번째 문자
+							+	k10_unitX[k10_j];
+			}
+			k10_i++; k10_j--; // i와 j 각각 1씩 증가
+		}
+		System.out.printf("\n %s[%s]\n", k10_sNumVal, k10_sNumVoice); //sNumVal과 sNumVoice 출력
 	}
 
 }
