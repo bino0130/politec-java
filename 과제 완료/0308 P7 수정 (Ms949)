@@ -1,0 +1,26 @@
+package chap01;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+import static java.time.temporal.ChronoUnit.DAYS;
+
+public class Chap01 {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+		
+		System.out.println("첫번째 날짜 입력");
+		String input1 = sc.next();
+		System.out.println("두번째 날짜 입력");
+		String input2 = sc.next();
+		
+		LocalDate date1 = LocalDate.parse(input1, formatter);
+		LocalDate date2 = LocalDate.parse(input2, formatter);
+		
+		long days = DAYS.between(date1, date2);
+		
+		System.out.println("두 날짜의 차는 " + days + "입니다");
+	}
+}
