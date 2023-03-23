@@ -1,4 +1,4 @@
-package advanced;
+package chap01;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
-public class DayThree {
+public class Practice {
 
 	public static void main(String[] args) {
 		//////////////////////////////
@@ -367,28 +367,28 @@ public class DayThree {
 			System.out.printf("%12s\n", k10_df.format(k10_price[k10_i] * k10_amount[k10_i])); // 금액
 		}
 
-		System.out.printf("\n\n%15s총 품목 수량%9s%5d\n", " ", " ", k10_itemname.length);
-		System.out.printf("%12s(*)면 세  물 품%14s\n", " ", k10_df.format(k10_taxfreeprice));
-		System.out.printf("%15s과 세  물 품%14s\n", " ", k10_df.format(k10_beforeTaxPrice));
-		System.out.printf("%15s부   가   세%14s\n", " ", k10_df.format(k10_tax));
-		System.out.printf("%15s합        계%14s\n", " ", k10_df.format(k10_totalPrice));
-		System.out.printf("결 제 대 상 금 액%10s%14s\n", " ", k10_df.format(k10_totalPrice));
+		System.out.printf("\n\n%15s총 품목 수량%9s%5d\n", " ", " ", k10_itemname.length); // 총 품목 수량 출력
+		System.out.printf("%12s(*)면 세  물 품%14s\n", " ", k10_df.format(k10_taxfreeprice)); // 면세물품 가격 출력
+		System.out.printf("%15s과 세  물 품%14s\n", " ", k10_df.format(k10_beforeTaxPrice)); // 과세물품 가격 출력
+		System.out.printf("%15s부   가   세%14s\n", " ", k10_df.format(k10_tax)); // 부가세 가격 출력
+		System.out.printf("%15s합        계%14s\n", " ", k10_df.format(k10_totalPrice)); // 합계 출력
+		System.out.printf("결 제 대 상 금 액%10s%14s\n", " ", k10_df.format(k10_totalPrice)); // 결제대상금액 출력
 		System.out.printf("------------------------------------------\n"); // 이
 		System.out.printf("0041 KB 국민%8s541707**0484/35860658\n", " "); // 세 문장이
-		System.out.printf("카드결제(IC)%9s일시불 / %11s\n", " ", k10_df.format(k10_totalPrice));
+		System.out.printf("카드결제(IC)%9s일시불 / %11s\n", " ", k10_df.format(k10_totalPrice)); // 카드결제, 일시불, 결제 금액 출력
 		System.out.printf("------------------------------------------\n"); // 기준
-		System.out.printf("%12s[신세계포인트 적립]\n", " ");
-		System.out.printf("남*현 고객님의 포인트 현황입니다.\n");
-		System.out.printf("금회발생포인트%7s%s%10s\n", " ", "9310**8416", k10_df.format(k10_todayPoint));
-		System.out.printf("누계(가용)포인트%13s(%10s)\n", k10_df.format(k10_totalPoint), k10_df.format(k10_beforePoint));
-		System.out.printf("*신세계포인트 유효기간은 2년입니다.\n");
+		System.out.printf("%12s[신세계포인트 적립]\n", " "); // 신세계포인트 적립 출력
+		System.out.printf("남*현 고객님의 포인트 현황입니다.\n"); //  보유 포인트 안내문자 출력
+		System.out.printf("금회발생포인트%7s%s%10s\n", " ", "9310**8416", k10_df.format(k10_todayPoint)); // 금회발생 포인트 출력
+		System.out.printf("누계(가용)포인트%13s(%10s)\n", k10_df.format(k10_totalPoint), k10_df.format(k10_beforePoint)); // 누적 포인트 출력
+		System.out.printf("*신세계포인트 유효기간은 2년입니다.\n"); // 안내문구 출력
 		System.out.printf("------------------------------------------\n"); // 구분 선
-		System.out.printf("%5s구매금액기준 무료주차시간 자동부여\n", " ");
-		System.out.printf("차량번호 :%23s36마****\n", " ");
-		System.out.printf("입차시간 :%12s%s\n", " ", k10_sdt.format(k10_calt.getTime()));
+		System.out.printf("%5s구매금액기준 무료주차시간 자동부여\n", " "); // 주차 안내문구 출력
+		System.out.printf("차량번호 :%23s36마****\n", " "); // 차량번호 출력
+		System.out.printf("입차시간 :%12s%s\n", " ", k10_sdt.format(k10_calt.getTime())); // 입차시간 출력
 		System.out.printf("------------------------------------------\n"); // 구분 선
-		System.out.printf("캐셔:084599 양00%21s1150\n", " ");
-		System.out.printf("%16s/00119861/00164980/31", k10_sdf.format(k10_calt.getTime()));
+		System.out.printf("캐셔:084599 양00%21s1150\n", " "); // 캐셔 번호, 이름 출력
+		System.out.printf("%16s/00119861/00164980/31", k10_sdf.format(k10_calt.getTime())); // 날짜 및 번호 출력
 		//////////////////////////////
 	} // main 메서드 끝나는 중괄호니까 지우지 말기
 
