@@ -131,8 +131,14 @@ public class DayThree {
 //		SimpleDateFormat k10_sdt = new SimpleDateFormat("YYYY/MM/dd HH:mm:ss"); // SimpleDateFormat 함수 호출
 //		
 //		int k10_iPrice = 33000; // int형 변수 iPrice에 세후가격 33000원 초기화
-//		int k10_beforePrice = k10_iPrice * 10 / 11;  // int형 변수 beforePrice에 세전가격 초기화
-//		int k10_tax =  (int) (k10_beforePrice * 0.1); // int형 변수 tax에 세금 초기화 (beforePrice의 10%)
+//		double k10_tax = (double) k10_iPrice / 11; // 세금 구하기 공식
+//		if (k10_tax == (int) k10_tax) { // 만약 tax에 소수값이 없다면
+//			k10_tax = (int) k10_tax; // tax는 정수형
+//		} else { // tax에 소수값이 있다면
+//			k10_tax = (double) Math.round(k10_tax + 0.5); // +0.5한 뒤 반올림
+//		}
+//		int k10_beforeTaxPrice = k10_iPrice - (int) k10_tax; // 세전가격 구하기
+//		
 //		System.out.printf("신용승인\n\n"); // 신용승인
 //		System.out.printf("단말기 : %8s%2s%s : %s\n", "2N68665898", " " ,"전표번호", "041218"); // 단말기 번호, 전표번호 출력
 //		System.out.printf("가맹점 : %s\n", "한양김치찌개"); // 가맹점 출력
@@ -156,7 +162,6 @@ public class DayThree {
 //		System.out.printf("--------------------------------------\n"); // 구분선 출력
 //		System.out.printf("%13s%s\n", " " ,"* 감사합니다 *"); // 감사합니다가 가운데에 오게끔 공백 맞추고 감사합니다 출력
 //		System.out.printf("%36s", "표준V2.08_20200212"); // 표준 버전 출력
-//	
 		//////////////////////////////
 
 		//////////////////////////////
@@ -193,12 +198,21 @@ public class DayThree {
 //
 //		int k10_total4 = k10_total1 + k10_total2 + k10_total3; // 품목 합계를 다 합친 최종 합계
 //
+//		double k10_tax = (double) k10_total4 / 11; // 세금 구하기 공식
+//		if (k10_tax == (int) k10_tax) { // 만약 tax에 소수값이 없다면
+//			k10_tax = (int) k10_tax; // tax는 정수형
+//		} else { // 만약 tax에 소수값이 있다면
+//			k10_tax = (double) Math.round(k10_tax + 0.5); // +0.5한 뒤 반올림
+//		}
+//
+//		int k10_beforeTaxPrice = k10_total4 - (int) k10_tax; // 세전가격 구하기
+//
 //		System.out.printf("%13s\"국민가게, 다이소\"\n", " "); // 국민가게 다이소 출력
 //		System.out.printf("(주)아성다이소_분당서현점\n"); // 아성다이소 분당서현점 출력
 //		System.out.printf("전화:%s\n", "031-702-6016"); // 전화번호 출력
 //		System.out.printf("본사:%s\n", "서울 강남구 남부순환로 2748 (도곡동)"); // 본사 주소 출력
 //		System.out.printf("대표:%s\n", "박정부,신호섭 213-81-52063"); // 대표 이름 출력
-//		System.out.printf("매장:%s\n", "경기도 성남시 분당구 분당로 53번길 11 (서현동)"); // 매장 이름 출력 
+//		System.out.printf("매장:%s\n", "경기도 성남시 분당구 분당로 53번길 11 (서현동)"); // 매장 이름 출력
 //		System.out.printf("==========================================\n"); // 구분 선
 //		System.out.printf("%8s소비자중심경영(CCM) 인증기업\n", " "); // 소비자중심경영 인증기업 출력
 //		System.out.printf("%6sISO 9001 품질경영시스템 인증기업\n", " "); // 품질경영시스템 인증기업 출력
@@ -209,27 +223,29 @@ public class DayThree {
 //		System.out.printf("%6s포장/가격 택 훼손시 교환/환불 불가\n", " "); // 교환/환불 유의사항 출력
 //		System.out.printf("%7s체크카드 취소 시 최대 7일 소요\n", " "); // 교환/환불 유의사항 출력
 //		System.out.printf("==========================================\n"); // 구분 선
-//		System.out.printf("[POS 1058231]%9s", " "); //POS 번호 출력
+//		System.out.printf("[POS 1058231]%9s", " "); // POS 번호 출력
 //		System.out.printf("%s\n", k10_sdt.format(k10_calt.getTime())); // 구매 당시 날짜, 시간 출력, 위와 같은 줄
 //		System.out.printf("==========================================\n"); // 구분 선
-//		
+//
 //		// 품목명을 일정 글자 수만큼 자르고, 남는 칸에 가격, 개수, 합계 출력
-//		System.out.printf("%s%s%s%2s%d%2s%s\n", lengthLimit(k10_itemname1, 36, ""), " ", k10_df.format(k10_price1), " ",
-//				k10_amount1, " ", k10_df.format(k10_total1));
-//		System.out.printf("[%s]\n",k10_itemcode1); // 코드번호 출력
-//		
+//		// subStrByte(k10_itemname1, 24)
+//		System.out.printf("%s%5s%3d%7s\n", subStrByte(k10_itemname1, 26), k10_df.format(k10_price1), k10_amount1,
+//				k10_df.format(k10_total1));
+//
+//		System.out.printf("[%s]\n", k10_itemcode1); // 코드번호 출력
+//
 //		// 품목명을 일정 글자 수만큼 자르고, 남는 칸에 가격, 개수, 합계 출력
-//		System.out.printf("%s%3s%s%2s%d%2s%s\n", lengthLimit(k10_itemname2, 31, ""), " ", k10_df.format(k10_price2),
-//				" ", k10_amount2, " ", k10_df.format(k10_total2));
+//		System.out.printf("%s%6s%3d%7s\n", subStrByte(k10_itemname2, 25), k10_df.format(k10_price2), k10_amount2,
+//				k10_df.format(k10_total2));
 //		System.out.printf("[%s]\n", k10_itemcode2); // 코드 번호 출력
-//		
+//
 //		// 품목명을 일정 글자 수만큼 자르고, 남는 칸에 가격, 개수, 합계 출력
-//		System.out.printf("%s%2s%s%2s%d%2s%s\n", lengthLimit(k10_itemname3, 35, ""), " ", k10_df.format(k10_price3),
-//				" ", k10_amount3, " ", k10_df.format(k10_total3));
+//		System.out.printf("%s%7s%3d%7s\n", subStrByte(k10_itemname3, 25), k10_df.format(k10_price3), k10_amount3,
+//				k10_df.format(k10_total3));
 //		System.out.printf("[%s]\n", k10_itemcode3); // 코드 번호 출력
-//		
-//		System.out.printf("%12s과세합계%16s%s\n", " ", " ", k10_df.format(k10_total4 * 0.909)); // 과세합계 출력
-//		System.out.printf("%14s부가세%18s%s\n", " ", " ", k10_df.format(k10_total4 * 0.091)); // 부가세 출력
+//
+//		System.out.printf("%12s과세합계%16s%s\n", " ", " ", k10_df.format(k10_beforeTaxPrice)); // 과세합계 출력
+//		System.out.printf("%14s부가세%18s%s\n", " ", " ", k10_df.format(k10_tax)); // 부가세 출력
 //		System.out.printf("------------------------------------------\n"); // 구분 선
 //		System.out.printf("판매합계%28s%s\n", " ", k10_df.format(k10_total4)); // 판매합계 출력
 //		System.out.printf("==========================================\n"); // 구분 선
@@ -250,92 +266,152 @@ public class DayThree {
 
 		//////////////////////////////
 		// #9. 영수증 출력 (이마트)
-		DecimalFormat k10_df = new DecimalFormat("###,###,###,###,###");
-		Calendar k10_calt = Calendar.getInstance();
-		SimpleDateFormat k10_sdt = new SimpleDateFormat("YYYY/MM/dd HH:mm:ss");
+		// 총 세후가격에서 면세가격을 뺀 금액에서 세전가격이 나온다. 과세물품 = 세전가격
+		// 면세가격 + 과세가격 + 세금 = 세후가격
+		// 소수점이 있으면 올림
+		// 맨 끝이 천만, 백만 ( 이 부분은 한글 13자정도가 최대라고 함)
 
-		String[] k10_itemname = { "초코파이", "바나나우유", "건포도", "오렌지주스", "초코에몽", "밀크티", "텀블러", "어항", "신라면", "짜파게티", "녹차티백",
-				"커피믹스", "보드마카", "핸드크림", "모니터", "TV", "형광등", "아이폰", "아이패드", "운동화", "닭가슴살", "1.5L 우유", "1.5L콜라", "가디건",
-				"목캔디", "컴퓨터", "그래픽카드", "A4용지", "초콜릿", "멀티탭" }; // %7s
+		// 자바 특징 : String a = "가b나"일때, 저걸 byte로 전환해서 byte length로 구하면 5가 나옴
+		// 자바에서는 한글을 2바이트로 취급하기 때문이다.
+
+		// item이 "가나다"라고 했을 때, item 뒤에 15개의 blank를 넣어놓고
+		// item을 byte형으로 바꾼 뒤 15번째 byte에서 자른다
+
+		// 만약 15번째가 한글일 경우, 14번째에서 자르고 blank 하나 넣어주기
+		// 15번째가 한글인지 아닌지 체크하는건 구글링
+
+		DecimalFormat k10_df = new DecimalFormat("###,###,###,###,###"); // 콤마찍기 전용 DecimalFormat 생성
+		Calendar k10_calt = Calendar.getInstance(); // 캘린더 생성
+		SimpleDateFormat k10_sdt = new SimpleDateFormat("YYYY/MM/dd HH:mm"); // 연/월/일 시간/분 출력하는 SimpleDateFormat 생성
+		SimpleDateFormat k10_sdf = new SimpleDateFormat("YYYYMMdd"); // 연/월/일 출력하는 SimpleDateFormat 생성
+
+		// 상품명 배열 생성
+		String[] k10_itemname = { "오리온 초코파이정", "빙그레 바나나우유", "팅팅탱탱 파인애플", "델몬트 신선한 오렌지주스", "초코에몽 진구에몽 비실에몽",
+				"K2 히말라야 전용 등산가방", "스타벅스 이디야커피 텀블러", "열대어,민물고기 전용 어항", "삼양라면", "짜파게티", "녹차티백", "맥심 프라푸치노 커피믹스",
+				"싹!지워져요 칠판지우개", "Kamil 소프트 이솝 핸드크림", "SamSung FullHD 모니터", "LG 홈씨어터 스피커", "최첨단 LED 안방등", "아이폰 14 프로맥스",
+				"아이패드프로 3세대 11.9인치", "나이키 조던 클래식7", "솔트페퍼 닭가슴살", "서울X 매일우유", "제로 X 코카콜라", "지오다노 가디건", "호올스 목캔디",
+				"진도 샤프", "NVIDIA 그래픽카드 2060", "한글과컴퓨터 A4용지", "엄마는 외계인 초콜릿", "감전방지! 멀티탭" }; // %7s
+
+		// 상품별 가격 배열 생성
 		int[] k10_price = { 3500, 1300, 2500, 2000, 1500, 3500, 5000, 5300, 2650, 2850, 5000, 5500, 3000, 6000, 200000,
 				1000000, 5000, 600000, 950000, 120000, 3500, 4800, 3000, 55000, 4000, 1200000, 600000, 15000, 3500,
-				5000 }; // %7s
-		int[] k10_amount = { 1, 5, 4, 6, 8, 9, 5, 3, 8, 6, 5, 3, 4, 10, 5, 1, 1, 5, 1, 1, 3, 4, 5, 5, 2, 5, 1, 1, 4, 4,
-				6 }; // %2s
+				5000 }; // %7d? 여차하면 앞에 - 붙여서 좌측정렬 시켜보자
 
-		System.out.printf("%15s이마트 죽전점 (031)888-1234\n", " ");
-		System.out.printf("%15s206-86-50913 김희석\n", " ");
-		System.out.printf("%15s용인 수지구 포은대로 552\n", " ");
-		System.out.printf("영수증 미지참시 교환/환불 불가\n");
-		System.out.printf("정상제품에 한함, 30일 이내(신선 7일)\n");
-		System.out.printf("※일부 브랜드매장 제외(매장 고지물참조)\n");
-		System.out.printf("교환/환불 구매점에서 가능(결제카드 지참)\n\n");
-		System.out.printf("[구 매]%s", k10_sdt.format(k10_calt.getTime()));
-		System.out.printf("%3sPOS:0011-9861\n", " ");
-		System.out.printf("------------------------------------------\n");
-		System.out.printf("%2s상 품 명%4s단  가%3s수량%9s금  액\n", " ", " ", " ", " ");
-		for (int k10_i = 0; k10_i < k10_itemname.length; k10_i++) {
-			if (k10_i % 5 == 0) {
-				System.out.printf("------------------------------------------\n");
-			}
-			System.out.printf("%7s\n", k10_itemname[k10_i]);
+		// 상품별 수량 배열 생성
+		int[] k10_amount = { 1, 5, 4, 6, 8, 9, 5, 3, 8, 6, 5, 3, 4, 10, 5, 1, 1, 5, 1, 1, 3, 4, 5, 5, 2, 9, 1, 1, 4, 4,
+				6 }; // %2d
 
+		// 상품별 면세 유무 배열 생성
+		boolean[] k10_taxfree = { true, true, true, true, false, true, true, true, true, false, true, true, true, true,
+				false, true, true, true, true, false, true, true, true, true, false, true, true, true, true, false };
+
+		int k10_taxfreeprice = 0; // 면세물품 총합 구하기
+		for (int k10_i = 4; k10_i < k10_price.length; k10_i += 5) { // i가 4부터 price의 길이 - 1까지 5씩 증가하는 반복문 실행
+			k10_taxfreeprice += k10_price[k10_i] * k10_amount[k10_i]; // 반복문에 저장
 		}
-		System.out.printf("------------------------------------------\n"); // 이
-		System.out.printf("0041 KB 국민%9s541707**0484/35860658\n", " "); // 세 문장이
-		System.out.printf("------------------------------------------\n"); // 기준
-		//////////////////////////////
 
+		// 합계금액 구하기
+		int k10_totalPrice = 0; // int형 변수 totalPrice 0으로 초기화
+		for (int k10_i = 0; k10_i < k10_price.length; k10_i++) { // i가 0부터 price의 길이 - 1까지 1씩 증가하는 반복문 실행
+			k10_totalPrice += k10_price[k10_i] * k10_amount[k10_i]; // 합계금액 저장
+		}
+
+		// 부가세, 과세물품 구하기
+		double k10_tax = (double) (k10_totalPrice - k10_taxfreeprice) / 11;
+
+		if (k10_tax == (int) k10_tax) { // 세금 구하기 공식
+			k10_tax = (int) k10_tax; // 만약 tax에 소수값이 없다면
+		} else { // 만약 tax에 소수값이 있다면
+			k10_tax = (double) Math.round(k10_tax + 0.5); // +0.5한 뒤 반올림
+		}
+
+		int k10_beforeTaxPrice = k10_totalPrice - (int) k10_tax - k10_taxfreeprice; // 세전가격 구하기
+
+		// 포인트 합계 구하기
+		int k10_todayPoint = 173; // 금회발생포인트
+		int k10_beforePoint = 5400; // 이전 포인트
+		int k10_totalPoint = k10_beforePoint + k10_todayPoint; // 포인트 합계
+
+		System.out.printf("%13s이마트 죽전점 (031)888-1234\n", " "); // 이마트 죽전점 출력
+		System.out.printf("%5s%5s%3s206-86-50913 김희석\n", " ", "Emart", " "); // 이마트 / 번호 / 김희석 출력
+		System.out.printf("%13s용인 수지구 포은대로 552\n", " "); // 용인 수지구 포은대로 출력
+		System.out.printf("영수증 미지참시 교환/환불 불가\n"); // 교환/환불 주의사항 출력
+		System.out.printf("정상제품에 한함, 30일 이내(신선 7일)\n"); // 교환/환불 주의사항 출력
+		System.out.printf("※일부 브랜드매장 제외(매장 고지물참조)\n"); // 교환/환불 주의사항 출력
+		System.out.printf("교환/환불 구매점에서 가능(결제카드 지참)\n\n"); // 교환/환불 주의사항 출력
+		System.out.printf("[구 매]%s", k10_sdt.format(k10_calt.getTime())); // 구매 일시 출력
+		System.out.printf("%5sPOS:0011-9861\n", " "); // POS기 번호 출력
+		System.out.printf("------------------------------------------\n"); // 구분 선
+		System.out.printf("%4s상 품 명%8s단  가%s수량%4s금  액\n", " ", " ", " ", " "); // 상품명, 단가, 수량, 금액 출력
+
+		for (int k10_i = 0; k10_i < k10_itemname.length; k10_i++) { // i가 0부터 itemname.length() - 1까지 1씩 증가하는 반복문 실행
+			String k10_a = subStrByte(k10_itemname[k10_i], 13); // String 변수 a에 itemname[i]를 13만큼 자른 값 초기화
+			if (k10_i % 5 == 0) { // i가 0 또는 5의 배수일 때
+				System.out.printf("------------------------------------------\n"); // 구분 선
+			}
+			if (k10_taxfree[k10_i] == false) { // 면세물품이라면
+				System.out.printf("* "); // 물품명 앞에 * 출력
+			} else // 면세물품이 아니라면
+				System.out.printf("  "); // 물품명 앞에 공백 출력
+
+			if (k10_a.getBytes().length < 13) { // a의 바이트길이가 13보다 작다면
+				System.out.printf("%s", k10_a); // a 출력하고
+				for (int k10_j = 0; k10_j < 13 - k10_a.getBytes().length; k10_j++) { // j가 0부터 (13 - a의 바이트 길이) - 1까지 1씩 증가하는 반복문 실행 
+					System.out.printf("%s", " "); // 남은 칸 만큼 공백 출력해서 맞추기
+				}
+			} else // ad의 바이트길이가 13보다 크거나 같다면
+				System.out.printf("%s", k10_a); // a 출력
+
+			System.out.printf("%11s", k10_df.format(k10_price[k10_i])); // 단가
+			System.out.printf("%3d", k10_amount[k10_i]); // 수량
+			System.out.printf("%12s\n", k10_df.format(k10_price[k10_i] * k10_amount[k10_i])); // 금액
+		}
+
+		System.out.printf("\n\n%15s총 품목 수량%9s%5d\n", " ", " ", k10_itemname.length);
+		System.out.printf("%12s(*)면 세  물 품%14s\n", " ", k10_df.format(k10_taxfreeprice));
+		System.out.printf("%15s과 세  물 품%14s\n", " ", k10_df.format(k10_beforeTaxPrice));
+		System.out.printf("%15s부   가   세%14s\n", " ", k10_df.format(k10_tax));
+		System.out.printf("%15s합        계%14s\n", " ", k10_df.format(k10_totalPrice));
+		System.out.printf("결 제 대 상 금 액%10s%14s\n", " ", k10_df.format(k10_totalPrice));
+		System.out.printf("------------------------------------------\n"); // 이
+		System.out.printf("0041 KB 국민%8s541707**0484/35860658\n", " "); // 세 문장이
+		System.out.printf("카드결제(IC)%9s일시불 / %11s\n", " ", k10_df.format(k10_totalPrice));
+		System.out.printf("------------------------------------------\n"); // 기준
+		System.out.printf("%12s[신세계포인트 적립]\n", " ");
+		System.out.printf("남*현 고객님의 포인트 현황입니다.\n");
+		System.out.printf("금회발생포인트%7s%s%10s\n", " ", "9310**8416", k10_df.format(k10_todayPoint));
+		System.out.printf("누계(가용)포인트%13s(%10s)\n", k10_df.format(k10_totalPoint), k10_df.format(k10_beforePoint));
+		System.out.printf("*신세계포인트 유효기간은 2년입니다.\n");
+		System.out.printf("------------------------------------------\n"); // 구분 선
+		System.out.printf("%5s구매금액기준 무료주차시간 자동부여\n", " ");
+		System.out.printf("차량번호 :%23s36마****\n", " ");
+		System.out.printf("입차시간 :%12s%s\n", " ", k10_sdt.format(k10_calt.getTime()));
+		System.out.printf("------------------------------------------\n"); // 구분 선
+		System.out.printf("캐셔:084599 양00%21s1150\n", " ");
+		System.out.printf("%16s/00119861/00164980/31", k10_sdf.format(k10_calt.getTime()));
+		//////////////////////////////
 	} // main 메서드 끝나는 중괄호니까 지우지 말기
 
-	public static String lengthLimit(String k10_inputStr, int k10_limit, String k10_fixStr) { // 한글 쪼개주는 메서드
-		if (k10_inputStr == null) // String타입 변수 k10_inputStr이 null값이라면
-			return ""; // 아무것도 리턴하지 않음
-
-		if (k10_limit <= 0) // int타입 변수 limit이 0보다 작거나 같다면
-			return k10_inputStr; // k10_inputStr 리턴
-
-		byte[] k10_strbyte = null; // byte타입 배열 strbyte null값으로 초기화
-
-		k10_strbyte = k10_inputStr.getBytes(); // k10_inputStr을 바이트코드로 인코딩한 뒤 배열 strbyte에 저장
-
-		if (k10_strbyte.length <= k10_limit) { // 만약 strbyte의 길이가 limit보다 작거나 같다면
-			return k10_inputStr; // k10_inputStr 리턴
-		}
-
-		// String.toCharArray()는 문자열을 한 글자씩 쪼개서 char타입의 배열에 집어넣는 메서드
-		char[] k10_charArray = k10_inputStr.toCharArray(); // k10_inputStr을 한 글자씩 쪼개서 char타입 배열 charArray에 넣는다.
-
-		int k10_checkLimit = k10_limit; // int타입 변수 checkLimit 초기화
-		for (int i = 0; i < k10_charArray.length; i++) { // i가 0부터 charArray.length() - 1까지 +1씩 증가하면서 작동하는 반복문 실행
-			if (k10_charArray[i] < 256) { // 만약 charArray[i]가 256보다 작다면
-				k10_checkLimit -= 1; // checkLimit = -1
-			} else { // 256보다 크거나 같다면
-				k10_checkLimit -= 2; // checkLimit = -2
+	public static String subStrByte(String k10_str, int k10_cutlen) { // 한글 자르는 메서드
+		if (!k10_str.isEmpty()) { // 입력받는 str에 내용이 있을 때
+			k10_str = k10_str.trim(); // 문자열 앞뒤 공백 없애줌
+			if (k10_str.getBytes().length <= k10_cutlen) { // str을 바이트화한 길이가 cutlen보다 작거나 같을때
+				return k10_str; // str 리턴
+			} else { // str byte length가 cutlen보다 클 때
+				StringBuffer k10_sbStr = new StringBuffer(k10_cutlen); // 문자열 추가변경하는 stringbuffer 사용
+				int k10_nCnt = 0; // 카운트 변수 0으로 초기화
+				for (char k10_ch : k10_str.toCharArray()) { // for each문 사용
+					// str을 char배열로 바꿔서 한 글자씩 받았을 때
+					// 해당 글자의 바이트 크기만큼 nCnt 증가
+					k10_nCnt += String.valueOf(k10_ch).getBytes().length;
+					if (k10_nCnt > k10_cutlen) // nCnt가 cutlen보다 크다면
+						break; // 브레이크
+					k10_sbStr.append(k10_ch); // 아니면 sbStr에 ch 누적
+				}
+				return k10_sbStr.toString(); // sbStr String 형태로 바꿔서 리턴
 			}
-
-			if (k10_checkLimit <= 0) { // 만약 checkLimit이 0보다 작거나 같다면
-				break; // break
-			}
-		}
-
-		// 대상 문자열 마지막 자리가 2바이트의 중간일 경우 제거함
-		byte[] k10_newByte = new byte[k10_limit + k10_checkLimit]; // 크기가 limit + checkLimit인 byte타입 배열 newByte 선언
-
-		for (int i = 0; i < k10_newByte.length; i++) { // i가 0부터 newByte.length() - 1까지 1씩 증가하면서 작동하는 반복문 실행
-			k10_newByte[i] = k10_strbyte[i]; // newByte[i] = strbyte[i]
-		}
-
-		if (k10_fixStr == null) { // 만약 fixStr이 null이라면
-
-			/*
-			 * new 연산자를 통해 new String()을 생성하면 기존에 String타입 변수가 생성되던 String pool에 생성되지 않고
-			 * Java Heap 영역에 생석이 된다. 같은 문자열 "abcd"를 가지고 있어도 String alpha = "abcd"와 new
-			 * String("abcd")는 서로 다르다.
-			 */
-			return new String(k10_newByte); // new 연산자를 통해 new String(newByte) 리턴
 		} else {
-			return new String(k10_newByte) + k10_fixStr; // new 연산자를 통해 new String(newbyte) + fixStr 리턴
+			return ""; // 아무것도 리턴하지 않음
 		}
 	}
 }
