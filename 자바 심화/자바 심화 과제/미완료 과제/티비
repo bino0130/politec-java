@@ -1,0 +1,26 @@
+package Class6;
+
+public class Tv { // 리모콘을 불러오는 TV 클래스
+
+	public static void main(String[] args) {
+		TvRemocon k10_tr = new TvRemocon(); // 객체생성
+
+		for (int k10_i = 0; k10_i < 10; k10_i++) { // 10회동안
+			k10_tr.ChannelUp(); // 채널업
+		}
+
+		for (int k10_i = 0; k10_i < 10; k10_i++) { // 10회동안
+			k10_tr.ChannelDn(); // 채널 다운
+		}
+
+		for (int k10_i = 0; k10_i < 5; k10_i++) { // 5회동안
+			k10_tr.volUp(); // 볼륨 업
+		}
+
+		for (int k10_i = 0; k10_i < 5; k10_i++) { // 5회동안
+			k10_tr.volDn(); // 볼륨 다운
+		}
+
+	}
+
+}
