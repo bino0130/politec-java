@@ -1,0 +1,30 @@
+package Class6;
+
+public class TvRemocon { // TvRemocon 클래스 생성
+	static int k10_vol = 5; // static int형 변수 vol 5로 초기화
+	static int k10_Channel = 20; // static int형 변수 channel 20으로 초기화
+	
+	public void volUp() { // 볼륨업 메서드
+		k10_vol++; // 볼륨 1씩 증가
+		if (k10_vol == 10) { // 볼륨이 10이라면
+			System.out.printf("주의! 청력에 손상이 갈 수 있습니다\n"); // 경고문구 출력
+		} else	System.out.printf("현재볼륨 : %d\n", k10_vol); // 10이 아니면 현재볼륨 출력
+	}
+	
+	public void volDn() { // 볼륨다운 메서드
+		k10_vol--; // 볼륨 1씩 감소
+		System.out.printf("현재볼륨 : %d\n", k10_vol); // 현재볼륨 출력
+	}
+	
+	public void ChannelUp() { // 채널업 메서드
+		k10_Channel++; // 채널 1씩 증가
+		if (k10_Channel == 30) { // 채널이 30이라면
+			System.out.printf("더 이상의 채널은 표시할 수 없습니다\n"); // 안내문구 출력
+		} else	System.out.printf("현재채널 : %d\n", k10_Channel); // 30이 아니면 현재채널 출력
+	}
+	
+	public void ChannelDn() { // 채널다운 메서드
+		k10_Channel--; // 채널 1씩 감소
+		System.out.printf("현재채널 : %d\n", k10_Channel); // 현재채널 출력
+	}
+}
