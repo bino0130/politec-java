@@ -1,0 +1,33 @@
+package Class6;
+
+public class mytest {
+	
+		static Elevater2 elev1;
+		static Elevater2 elev2;
+		static Elevater2 elev3;
+		
+	public static void main(String[] args) {
+		elev1 = new Elevater2();
+		elev2 = new Elevater2(20, 1, 8);
+		elev3 = new Elevater2(50, -3, 5);
+		
+		for (int i = 0; i < 10; i++) {
+			elev1.up(); elev1.msg("1번엘레 한층 오르기");
+//			elev1.up(); elev1.msg("2번엘레 한층 오르기");
+//			elev1.up(); elev1.msg("3번엘레 한층 오르기");
+		}
+		System.out.println();
+		for (int i = 0; i < 20; i+=2) {
+			elev2.up(2); elev2.msg("1번엘레 2층씩 오르기");
+//			elev2.up(2); elev2.msg("2번엘레 한층 오르기");
+//			elev2.up(2); elev2.msg("3번엘레 한층 오르기");
+		}
+		System.out.println();
+		for (int i = 0; i < 20; i+=3) {
+			elev3.up(3); elev3.msg("1번엘레 3층씩 오르기");
+//			elev3.up(3); elev3.msg("2번엘레 한층 오르기");
+//			elev3.up(3); elev3.msg("3번엘레 한층 오르기");
+		}
+	}
+
+}
