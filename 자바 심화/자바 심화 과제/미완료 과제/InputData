@@ -1,0 +1,36 @@
+package Class6;
+
+public class InputData {
+	static int[] num;
+	static String[] name;
+	static int[] kor;
+	static int[] eng;
+	static int[] mat;
+	static int[] sum;
+	static double[] ave;
+	
+	public InputData (int iPerson) {
+		num = new int[iPerson];
+		name = new String[iPerson];
+		kor = new int[iPerson];
+		eng = new int[iPerson];
+		mat = new int[iPerson];
+
+		sum = new int[iPerson];
+		
+		for (int i = 0; i < iPerson; i++) {
+			sum[i] = ( kor[i] + eng[i] + mat[i] );
+		}
+		
+		ave = new double[iPerson];
+		
+		for (int i = 0; i < iPerson; i++) {
+			ave[i] = (kor[i] + eng[i] + mat[i]) / 3.0;
+		}
+	}
+	
+	void SetData(int setI, int setName, int setKor, int setEng, int setMat) {
+		
+	}
+
+}
