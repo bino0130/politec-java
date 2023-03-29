@@ -1,0 +1,33 @@
+package Class6;
+
+import java.util.ArrayList;
+
+public class InputData {
+	static int[] k10_num; // int형 배열 num 생성
+	static String[] k10_name; // String형 배열 name 생성
+	static int[] k10_kor; // int형 배열 kor 생성
+	static int[] k10_eng; // int형 배열 eng 생성
+	static int[] k10_mat; // int형 배열 mat생성
+	static int[] k10_sum; // int형 배열 sum 생성
+	static int[] k10_ave; // double형 배열 ave 생성
+	
+	InputData (int k10_iPerson) { // 크기를 설정해주는 생성자
+		k10_num = new int[k10_iPerson]; // num 크기 설정
+		k10_name = new String[k10_iPerson]; // name 크기 설정
+		k10_kor = new int[k10_iPerson]; // kor 크기 설정
+		k10_eng = new int[k10_iPerson]; // eng 크기 설정
+		k10_mat = new int[k10_iPerson]; // mat 크기 설정
+		k10_sum = new int[k10_iPerson]; // sum 크기 설정
+		k10_ave = new int[k10_iPerson]; // ave 크기 설정
+	}
+	
+	// 입력받은 값을 저장해주는 메서드
+	void SetData(int k10_setI, String k10_setName, int k10_setKor, int k10_setEng, int k10_setMat) {
+		k10_name[k10_setI] = k10_setName; // setName 저장
+		k10_kor[k10_setI] = k10_setKor; // setKor 저장
+		k10_eng[k10_setI] = k10_setEng; // setEng 저장
+		k10_mat[k10_setI] = k10_setMat; // setMat 저장
+		k10_sum[k10_setI] = k10_kor[k10_setI] + k10_eng[k10_setI] + k10_mat[k10_setI];  // kor, eng, mat 총합 저장
+		k10_ave[k10_setI] = (k10_kor[k10_setI] + k10_eng[k10_setI] + k10_mat[k10_setI]) / 3; // 평균 저장
+	}
+}
