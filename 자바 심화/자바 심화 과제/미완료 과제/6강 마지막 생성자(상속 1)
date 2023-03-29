@@ -1,0 +1,64 @@
+package Class6;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+public class PrintGrade {
+
+	public static void main(String[] args) {
+		CalculGrade cg = new CalculGrade(30);
+	}
+}
+
+class CalculGrade extends InputData {
+	int sumkor, sumeng, summat, sumsum, sumave = 0;
+	Calendar k10_calt = Calendar.getInstance();
+	SimpleDateFormat k10_sdt = new SimpleDateFormat("YYYY.MM.dd HH:mm:ss");
+
+	CalculGrade(int iPerson) {
+		super(iPerson);
+		print1();
+		calval1(iPerson);
+		calval2(iPerson);
+		print2(iPerson);
+	}
+
+	public void print1() {
+		System.out.printf("%28s\n", "성적집계표");
+		System.out.printf("%33s출력일자 : %s\n", " ", k10_sdt.format(k10_calt.getTime()));
+		System.out.printf("================================================================\n");
+		System.out.printf("%s%5s%7s%5s%5s%5s%7s\n", "번호", "이름", "국어", "영어", "수학", "총점", "평균");
+		System.out.printf("================================================================\n");
+	}
+
+	public void calval1(int iPerson) {
+		for (int k10_i = 0; k10_i < iPerson; k10_i++) {
+			String k10_name = String.format("홍길%02d", k10_i + 1);
+			int k10_kor = (int) (Math.random() * 101);
+			int k10_eng = (int) (Math.random() * 101);
+			int k10_mat = (int) (Math.random() * 101);
+			SetData(k10_i, k10_name, k10_kor, k10_eng, k10_mat);
+		}
+	}
+
+	public void calval2(int iPerson) {
+		for (int k10_i = 0; k10_i < iPerson; k10_i++) {
+			sumkor += k10_kor[k10_i];
+			sumeng += k10_eng[k10_i];
+			summat += k10_mat[k10_i];
+			sumsum += k10_sum[k10_i];
+			sumave += k10_ave[k10_i];
+			System.out.printf("%03d%8s%6d%7d%7d%7d%9d\n", k10_i + 1, k10_name[k10_i], k10_kor[k10_i], k10_eng[k10_i],
+					k10_mat[k10_i], k10_sum[k10_i], k10_ave[k10_i]);
+		}
+	}
+
+	public void print2(int iPerson) {
+		System.out.printf("================================================================\n");
+		System.out.printf("합계");
+		System.out.printf("%7s%8d%7d%7d%7d%9d\n", " ", sumkor, sumeng, summat, sumsum, sumave);
+		System.out.printf("평균");
+		System.out.printf("%7s%8d%7d%7d%7d%9d\n", " ", sumkor / iPerson, sumeng / iPerson, summat / iPerson,
+				sumsum / iPerson, sumave / iPerson);
+	}
+}
