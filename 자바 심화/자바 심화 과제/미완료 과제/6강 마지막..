@@ -1,0 +1,110 @@
+package chap01;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+public class PrintGrade2 {
+	static int sumkor, sumeng, summat, sumsum, sumave, totkor, toteng, totmat, totsum, totave = 0;
+
+	public static void main(String[] args) {
+		Calendar k10_calt = Calendar.getInstance();
+		SimpleDateFormat k10_sdt = new SimpleDateFormat("YYYY.MM.dd HH:mm:ss");
+
+		CalculGrade2 cg = new CalculGrade2(200);
+
+		for (int k10_i = 0; k10_i < 200; k10_i++) {
+			String k10_name = String.format("홍길%02d", k10_i + 1);
+			int k10_kor = (int) (Math.random() * 101);
+			int k10_eng = (int) (Math.random() * 101);
+			int k10_mat = (int) (Math.random() * 101);
+			cg.SetData(k10_i, k10_name, k10_kor, k10_eng, k10_mat);
+		}
+
+		System.out.printf("%28s\n", "성적집계표");
+		System.out.printf("PAGE : %2d%24s출력일자 : %s\n", 1, " ", k10_sdt.format(k10_calt.getTime()));
+		System.out.printf("================================================================\n");
+		System.out.printf("%s%5s%7s%5s%5s%5s%7s\n", "번호", "이름", "국어", "영어", "수학", "총점", "평균");
+		System.out.printf("================================================================\n");
+		for (int k10_i = 1; k10_i < 8; k10_i++) {
+			for (int k10_j = 0; k10_j < 200; k10_j++) {
+//			cnt = 0;
+				sumkor += cg.k10_kor[k10_j];
+				sumeng += cg.k10_eng[k10_j];
+				summat += cg.k10_mat[k10_j];
+				sumsum += cg.k10_sum[k10_j];
+				sumave += cg.k10_ave[k10_j];
+				
+				if (k10_j != 0 && (k10_j + 1) % 30 == 0) {
+					totkor += sumkor;
+					toteng += sumeng;
+					totmat += summat;
+					totsum += sumsum;
+					totave += sumave;
+					System.out.printf("%03d%8s%6d%7d%7d%7d%9d\n", k10_j + 1, cg.k10_name[k10_j], cg.k10_kor[k10_j],
+							cg.k10_eng[k10_j], cg.k10_mat[k10_j], cg.k10_sum[k10_j], cg.k10_ave[k10_j]);
+					System.out.printf("================================================================\n");
+					System.out.printf("현재페이지\n");
+					System.out.printf("합계");
+					System.out.printf("%7s%8d%7d%7d%7d%9d\n", " ", sumkor, sumeng, summat, sumsum, sumave);
+					System.out.printf("평균");
+					System.out.printf("%7s%8d%7d%7d%7d%9d\n", " ", sumkor / 30, sumeng / 30, summat / 30, sumsum / 30,
+							sumave / 30);
+					System.out.printf("================================================================\n");
+					System.out.printf("누적페이지\n");
+					System.out.printf("합계");
+					System.out.printf("%7s%8d%7d%7d%7d%9d\n", " ", totkor, toteng, totmat, totsum, totave);
+					System.out.printf("평균");
+					System.out.printf("%7s%8d%7d%7d%7d%9d\n", " ", totkor / k10_i, toteng / k10_i, totmat / k10_i, totsum / k10_i,
+							totave / k10_i);
+				} else if (k10_j + 1 == 200) {
+					totkor += sumkor;
+					toteng += sumeng;
+					totmat += summat;
+					totsum += sumsum;
+					totave += sumave;
+					System.out.printf("%03d%8s%6d%7d%7d%7d%9d\n", k10_j + 1, cg.k10_name[k10_j], cg.k10_kor[k10_j],
+							cg.k10_eng[k10_j], cg.k10_mat[k10_j], cg.k10_sum[k10_j], cg.k10_ave[k10_j]);
+					System.out.printf("================================================================\n");
+					System.out.printf("현재페이지\n");
+					System.out.printf("합계");
+					System.out.printf("%7s%8d%7d%7d%7d%9d\n", " ", sumkor, sumeng, summat, sumsum, sumave);
+					System.out.printf("평균");
+					System.out.printf("%7s%8d%7d%7d%7d%9d\n", " ", sumkor / 20, sumeng / 20, summat / 20, sumsum / 20,
+							sumave / 20);
+					System.out.printf("================================================================\n");
+					System.out.printf("누적페이지\n");
+					System.out.printf("합계");
+					System.out.printf("%7s%8d%7d%7d%7d%9d\n", " ", totkor, toteng, totmat, totsum, totave);
+					System.out.printf("평균");
+					System.out.printf("%7s%8d%7d%7d%7d%9d\n", " ", totkor / k10_i, toteng / k10_i, totmat / k10_i, totsum / k10_i,
+							totave / k10_i);
+				} else if (k10_j != 0 && (k10_j + 1) % 30 != 0) {
+					totkor += sumkor;
+					toteng += sumeng;
+					totmat += summat;
+					totsum += sumsum;
+					totave += sumave;
+					System.out.printf("%03d%8s%6d%7d%7d%7d%9d\n", k10_j + 1, cg.k10_name[k10_j], cg.k10_kor[k10_j],
+							cg.k10_eng[k10_j], cg.k10_mat[k10_j], cg.k10_sum[k10_j], cg.k10_ave[k10_j]);
+				}
+			}
+		}
+	}
+//		System.out.printf("================================================================\n");
+//		System.out.printf("현재페이지\n");
+//		System.out.printf("합계");
+//		System.out.printf("%7s%8d%7d%7d%7d%9d\n", " ", sumkor, sumeng, summat, sumsum, sumave);
+//		System.out.printf("평균");
+//		System.out.printf("%7s%8d%7d%7d%7d%9d\n", " ", sumkor / 200, sumeng / 200, summat / 200,
+//				sumsum / 200, sumave / 200);
+//		System.out.printf("================================================================\n");
+//		System.out.printf("누적페이지\n");
+}
+
+class CalculGrade2 extends InputData {
+
+	CalculGrade2(int iPerson) {
+		super(iPerson);
+	}
+
+}
